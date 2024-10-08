@@ -1,0 +1,6 @@
+@PlataformaSeguimientoEducativo_HostAddress = http://localhost:5196
+
+GET {{PlataformaSeguimientoEducativo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
