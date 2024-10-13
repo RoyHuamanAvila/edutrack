@@ -141,3 +141,4 @@ C:\Users\ASUS\Documents\c21-30-n-csharp-react\AppSeguimientoEducativo\Plataforma
 C:\Users\ASUS\Documents\c21-30-n-csharp-react\AppSeguimientoEducativo\PlataformaSeguimientoEducativo\obj\Debug\net8.0\PlataformaSeguimientoEducativo.pdb
 C:\Users\ASUS\Documents\c21-30-n-csharp-react\AppSeguimientoEducativo\PlataformaSeguimientoEducativo\obj\Debug\net8.0\PlataformaSeguimientoEducativo.genruntimeconfig.cache
 C:\Users\ASUS\Documents\c21-30-n-csharp-react\AppSeguimientoEducativo\PlataformaSeguimientoEducativo\obj\Debug\net8.0\ref\PlataformaSeguimientoEducativo.dll
+C:\Users\ASUS\Documents\c21-30-n-csharp-react\AppSeguimientoEducativo\PlataformaSeguimientoEducativo\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlataformaSeguimientoEducativo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f094fbfcc4b321c30cb922d9fd751208c94f4bba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05226cddabb7e3b01404e54391b41d97b8930293")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlataformaSeguimientoEducativo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlataformaSeguimientoEducativo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
