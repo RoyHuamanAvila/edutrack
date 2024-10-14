@@ -15,5 +15,6 @@ namespace PlataformaSeguimientoEducativo.Models
         public DateTime EnrollmentDate { get; set; }
         public ICollection<Grade> Grades { get; set; }
         public ICollection<ParentStudent> ParentStudents { get; set; }
+        public ICollection<Feedback> Feedbacks { get; set; }
     }
 }

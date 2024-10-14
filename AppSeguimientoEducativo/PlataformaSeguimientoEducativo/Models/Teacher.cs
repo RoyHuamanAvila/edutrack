@@ -12,5 +12,6 @@ namespace PlataformaSeguimientoEducativo.Models
         public string Subject { get; set; }
         public DateTime HireDate { get; set; }
         public ICollection<Course> Courses { get; set; }
+        public ICollection<Feedback> Feedbacks { get; set; }
     }
 }

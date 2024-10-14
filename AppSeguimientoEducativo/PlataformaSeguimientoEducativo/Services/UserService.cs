@@ -82,26 +82,77 @@ namespace PlataformaSeguimientoEducativo.Services
 
         private string GenerateJwtToken(User user)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var claims = new[]
+            var claims = new List<Claim>
             {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-            new Claim(ClaimTypes.Role, user.Role.RoleName)
-        };
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Role, user.Role.RoleName) 
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
+                audience: _configuration["Jwt:Issuer"], 
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(10),
-                signingCredentials: credentials
-            );
+                expires: DateTime.Now.AddHours(1),
+                signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<StudentDashboardDto> GetStudentDashboardAsync(int userId)
+        {
+            var user = await _unitOfWork.Users.GetUserWithRoleAsync(userId);
+            if (user == null || user.Role.RoleName != "Student")
+            {
+                throw new ApplicationException("Usuario no encontrado o no es estudiante");
+            }
+
+            var student = await _unitOfWork.Students.GetByUserIdAsync(userId);
+            if (student == null)
+            {
+                throw new ApplicationException("Perfil de estudiante no encontrado");
+            }
+
+            var courses = await _unitOfWork.Courses.GetCoursesForStudentAsync(student.StudentId);
+
+            var dashboard = new StudentDashboardDto
+            {
+                StudentId = student.StudentId,
+                FullName = user.FullName,
+                Role = "Student",
+                Courses = courses.Select(c => new CourseInfoDto
+                {
+                    CourseId = c.CourseId,
+                    CourseName = c.CourseName,
+                    TeacherName = c.Teacher.User.FullName,
+                    AcademicPeriodName = c.AcademicPeriod.PeriodName,
+                    Grades = c.Grades
+                        .Where(g => g.StudentId == student.StudentId)
+                        .Select(g => new GradeDto
+                        {
+                            GradeValue = g.GradeValue,
+                            EvaluationDate = g.EvaluationDate 
+                        })
+                        .ToList(),
+                    Feedbacks = c.Feedbacks
+                        .Where(f => f.StudentId == student.StudentId)
+                        .Select(f => new FeedbackDto
+                        {
+                            FeedbackText = f.FeedbackText,
+                            TeacherName = f.Teacher.User.FullName, 
+                            FeedbackDate = f.FeedbackDate 
+                        })
+                        .ToList()
+                }).ToList()
+            };
+
+
+
+            return dashboard;
         }
     }
 }

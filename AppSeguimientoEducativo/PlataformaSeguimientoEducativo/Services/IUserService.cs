@@ -10,5 +10,7 @@ namespace PlataformaSeguimientoEducativo.Services
         Task<User> RegisterUserAsync(RegisterUserDto registerDto);
         Task<string> LoginAsync(LoginDto loginDto);
 
+        Task<StudentDashboardDto> GetStudentDashboardAsync(int userId);
+
     }
 }

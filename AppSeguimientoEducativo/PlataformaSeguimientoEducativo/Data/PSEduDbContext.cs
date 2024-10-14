@@ -117,21 +117,21 @@ namespace PlataformaSeguimientoEducativo.Data
 
             // Feedback - configuración
             modelBuilder.Entity<Feedback>()
+        .HasOne(f => f.Course)
+        .WithMany(c => c.Feedbacks)
+        .HasForeignKey(f => f.CourseId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Feedback>()
                 .HasOne(f => f.Student)
-                .WithMany()
+                .WithMany(s => s.Feedbacks)
                 .HasForeignKey(f => f.StudentId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Feedback>()
                 .HasOne(f => f.Teacher)
-                .WithMany()
+                .WithMany(t => t.Feedbacks)
                 .HasForeignKey(f => f.TeacherId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Feedback>()
-                .HasOne(f => f.Course)
-                .WithMany()
-                .HasForeignKey(f => f.CourseId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // Notification - User

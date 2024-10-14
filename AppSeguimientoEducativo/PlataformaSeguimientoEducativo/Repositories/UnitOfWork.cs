@@ -8,12 +8,16 @@ namespace PlataformaSeguimientoEducativo.Repositories
 
         public IUserRepository Users { get; private set; }
         public IRoleRepository Roles { get; private set; }
+        public IStudentRepository Students { get; private set; }
+        public ICourseRepository Courses { get; private set; }
 
         public UnitOfWork(PSEduDbContext context)
         {
             _context = context;
             Users = new UserRepository(_context);
             Roles = new RoleRepository(_context);
+            Students = new StudentRepository(_context);
+            Courses = new CourseRepository(_context);
         }
 
         public async Task<int> CompleteAsync()

@@ -15,5 +15,6 @@ namespace PlataformaSeguimientoEducativo.Models
         public AcademicPeriod AcademicPeriod { get; set; }
         public string Grade { get; set; }
         public ICollection<Grade> Grades { get; set; }
+        public ICollection<Feedback> Feedbacks { get; set; }
     }
 }

@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|c:\\users\\asus\\documents\\c21-30-n-csharp-react\\appseguimientoeducativo\\plataformaseguimientoeducativo\\repositories\\courserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|solutionrelative:plataformaseguimientoeducativo\\repositories\\courserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|c:\\users\\asus\\documents\\c21-30-n-csharp-react\\appseguimientoeducativo\\plataformaseguimientoeducativo\\services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|solutionrelative:plataformaseguimientoeducativo\\services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|c:\\users\\asus\\documents\\c21-30-n-csharp-react\\appseguimientoeducativo\\plataformaseguimientoeducativo\\data\\psedudbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|solutionrelative:plataformaseguimientoeducativo\\data\\psedudbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,6 +67,45 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StudentService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Services\\StudentService.cs",
+              "RelativeDocumentMoniker": "PlataformaSeguimientoEducativo\\Services\\StudentService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Services\\StudentService.cs",
+              "RelativeToolTip": "PlataformaSeguimientoEducativo\\Services\\StudentService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwDAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T12:21:42.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CourseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Repositories\\CourseRepository.cs",
+              "RelativeDocumentMoniker": "PlataformaSeguimientoEducativo\\Repositories\\CourseRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Repositories\\CourseRepository.cs",
+              "RelativeToolTip": "PlataformaSeguimientoEducativo\\Repositories\\CourseRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwA8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T12:19:45.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PSEduDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Data\\PSEduDbContext.cs",
+              "RelativeDocumentMoniker": "PlataformaSeguimientoEducativo\\Data\\PSEduDbContext.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Data\\PSEduDbContext.cs",
+              "RelativeToolTip": "PlataformaSeguimientoEducativo\\Data\\PSEduDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-14T11:19:56.105Z",
+              "EditorCaption": ""
             }
           ]
         }

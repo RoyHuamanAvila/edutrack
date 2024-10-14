@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using PlataformaSeguimientoEducativo.Data;
 using PlataformaSeguimientoEducativo.Models;
 using PlataformaSeguimientoEducativo.Repositories;
 using PlataformaSeguimientoEducativo.Services;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -26,6 +28,8 @@ namespace PlataformaSeguimientoEducativo
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+
+            builder.Services.AddScoped<IStudentService, StudentService>();
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
@@ -50,14 +54,25 @@ namespace PlataformaSeguimientoEducativo
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidateAudience = true,
+                        ValidateAudience = true, // Cambia esto a true si estás usando Audience
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                        ValidAudience = builder.Configuration["Jwt:Audience"],
+                        ValidAudience = builder.Configuration["Jwt:Issuer"], // O usa un Audience separado
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
                     };
                 });
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("NewPolity",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -72,10 +87,10 @@ namespace PlataformaSeguimientoEducativo
                 app.UseSwaggerUI();
             }
 
-            app.UseCors("AllowAll");
+            app.UseCors("NewPolity");
 
             app.UseHttpsRedirection();
-
+            
             app.UseAuthentication();
             app.UseAuthorization();
 

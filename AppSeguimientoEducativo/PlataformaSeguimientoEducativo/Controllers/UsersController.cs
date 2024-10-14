@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PlataformaSeguimientoEducativo.DTOs;
 using PlataformaSeguimientoEducativo.Models;
 using PlataformaSeguimientoEducativo.Repositories;
 using PlataformaSeguimientoEducativo.Services;
+using System.Security.Claims;
 
 namespace PlataformaSeguimientoEducativo.Controllers
 {

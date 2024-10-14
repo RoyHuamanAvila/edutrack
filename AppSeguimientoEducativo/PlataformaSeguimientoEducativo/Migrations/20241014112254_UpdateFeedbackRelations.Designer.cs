@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlataformaSeguimientoEducativo.Data;
 
@@ -11,9 +12,11 @@ using PlataformaSeguimientoEducativo.Data;
 namespace PlataformaSeguimientoEducativo.Migrations
 {
     [DbContext(typeof(PSEduDbContext))]
-    partial class PSEduDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241014112254_UpdateFeedbackRelations")]
+    partial class UpdateFeedbackRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
