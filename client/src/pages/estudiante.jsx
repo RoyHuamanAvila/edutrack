@@ -1,4 +1,33 @@
 function Estudiante() {
+    const calificaciones = [
+        {
+            asignatura: "Matemáticas",
+            calificacion: 85,
+            promedio: 88,
+            docente: "Prof. García"
+        },
+        {
+            asignatura: "Historia",
+            calificacion: 90,
+            promedio: 92,
+            docente: "Prof. López"
+        },
+        {
+            asignatura: "Ciencias",
+            calificacion: 78,
+            promedio: 80,
+            docente: "Prof. Martínez"
+        },
+        {
+            asignatura: "Literatura",
+            calificacion: 92,
+            promedio: 89,
+            docente: "Prof. Fernández"
+        }
+    ];
+
+    console.log(calificaciones);
+
     return (
         <div id="student" className="max-w-[1281px] mx-auto">
             <div className="flex items-center justify-between">
@@ -23,6 +52,16 @@ function Estudiante() {
                     <td className="py-[25px] px-[10px]">#.#</td>
                     <td className="py-[25px] px-[10px]">Nombre del docente</td>
                 </tr>
+                {
+                    calificaciones.map(({ asignatura, calificacion, docente, promedio }, index) =>
+                        <tr key={index}>
+                            <td className="py-[25px] px-[10px]">{asignatura}</td>
+                            <td className="py-[25px] px-[10px]">{calificacion}</td>
+                            <td className="py-[25px] px-[10px]">{promedio}</td>
+                            <td className="py-[25px] px-[10px]">{docente}</td>
+                        </tr>
+                    )
+                }
             </table>
             <div className="mx-auto w-max mt-[17px]">
                 <span className="text-[#595353] font-extrabold">Promedio del Periodo</span> 7.8
