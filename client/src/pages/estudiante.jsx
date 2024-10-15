@@ -40,28 +40,26 @@ function Estudiante() {
                 </div>
             </div>
             <table className="w-full mt-[17px] text-center">
-                <tr>
-                    <th>Asignatura</th>
-                    <th>Calificación</th>
-                    <th>Promedio por asignatura</th>
-                    <th>Docente</th>
-                </tr>
-                <tr>
-                    <td className="py-[25px] px-[10px]">Nombre de la asignatura</td>
-                    <td className="py-[25px] px-[10px]">#</td>
-                    <td className="py-[25px] px-[10px]">#.#</td>
-                    <td className="py-[25px] px-[10px]">Nombre del docente</td>
-                </tr>
-                {
-                    calificaciones.map(({ asignatura, calificacion, docente, promedio }, index) =>
-                        <tr key={index}>
-                            <td className="py-[25px] px-[10px]">{asignatura}</td>
-                            <td className="py-[25px] px-[10px]">{calificacion}</td>
-                            <td className="py-[25px] px-[10px]">{promedio}</td>
-                            <td className="py-[25px] px-[10px]">{docente}</td>
-                        </tr>
-                    )
-                }
+                <thead>
+                    <tr>
+                        <th>Asignatura</th>
+                        <th>Calificación</th>
+                        <th>Promedio por asignatura</th>
+                        <th>Docente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        calificaciones.map(({ asignatura, calificacion, docente, promedio }, index) =>
+                            <tr key={index}>
+                                <td className="py-[25px] px-[10px]">{asignatura}</td>
+                                <td className="py-[25px] px-[10px]">{calificacion}</td>
+                                <td className="py-[25px] px-[10px]">{promedio}</td>
+                                <td className="py-[25px] px-[10px]">{docente}</td>
+                            </tr>
+                        )
+                    }
+                </tbody>
             </table>
             <div className="mx-auto w-max mt-[17px]">
                 <span className="text-[#595353] font-extrabold">Promedio del Periodo</span> 7.8
