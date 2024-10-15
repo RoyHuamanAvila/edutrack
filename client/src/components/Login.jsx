@@ -4,11 +4,11 @@ import EyeIcon from "../assets/icon/icon";
 const Login = () => {
   return (
     <div className="bg-white min-h-screen flex items-center justify-center">
-      <div className="mx-auto px-4 sm:px-6 w-full max-w-7xl py-16 sm:py-24 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 space-y-12 lg:space-y-0">
+      <div className="w-full py-16 sm:py-24 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-0 space-y-12 lg:space-y-0">
 
           {/* Contenedor Izquierdo */}
-          <div className="group relative rounded p-6 hidden lg:block h-full w-[767px]">
+          <div className="group relative rounded p-6 hidden lg:block h-full">
             <div className="flex flex-col justify-end h-full text-center">
               <h2 className="text-[24px] font-bold text-black p-2">
                 Monitoreo de rendimientos
@@ -20,7 +20,7 @@ const Login = () => {
           </div>
 
           {/* Contenedor Derecho */}
-          <div className="group relative bg-[#CDCDCD] p-6 w-[673px] h-full flex flex-col items-center justify-between">
+          <div className="group relative bg-[#CDCDCD] p-6 h-full flex flex-col items-center justify-between">
             <div className="w-full flex flex-col items-center justify-center text-center">
               <img src="" alt="Logo" className="object-cover w-[134px] h-[76px] bg-white rounded-md" />
               <h3 className="mt-6 text-[48px] text-black p-5 font-bold">
@@ -55,11 +55,10 @@ const Login = () => {
                     className="block w-full px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none pr-10"
                     placeholder="Ingresar contraseña"
                   />
-                  <span className="flex items-center justify-center pr-3 cursor-pointer"> {/* Coloca el ícono en un span */}
-                    <EyeIcon className="w-5 h-5 text-gray-500 bg-white" /> {/* Aquí puedes agregar el color de fondo */}
+                  <span className="flex items-center justify-center pr-3 cursor-pointer">
+                    <EyeIcon className="w-5 h-5 text-gray-500 bg-white" /> 
                   </span>
                 </div>
-
               </div>
 
               <button className="w-[499px] bg-[#6B6969] text-white font-semibold py-2 px-4 rounded-md">
