@@ -30,11 +30,12 @@ namespace PlataformaSeguimientoEducativo
             builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
             builder.Services.AddScoped<IStudentService, StudentService>();
-
-            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IParentService, ParentService>();
+			builder.Services.AddScoped<IGradeService, GradeService>();
+			builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
-            builder.Services.AddControllers().AddJsonOptions(options =>
+			builder.Services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
                 options.JsonSerializerOptions.WriteIndented = true;
