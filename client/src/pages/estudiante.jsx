@@ -32,27 +32,32 @@ function Estudiante() {
         {
             name: "Juan Pérez",
             asignatura: "Matemáticas",
-            comment: "Excelente en explicar conceptos complejos de manera sencilla."
+            comment: "Excelente en explicar conceptos complejos de manera sencilla.",
+            date: "16/10/2024"
         },
         {
             name: "María López",
             asignatura: "Historia",
-            comment: "Sus clases son muy dinámicas y llenas de ejemplos interesantes."
+            comment: "Sus clases son muy dinámicas y llenas de ejemplos interesantes.",
+            date: "16/10/2024"
         },
         {
             name: "Carlos García",
             asignatura: "Ciencias",
-            comment: "Muy paciente y siempre dispuesto a ayudar a los estudiantes."
+            comment: "Muy paciente y siempre dispuesto a ayudar a los estudiantes.",
+            date: "16/10/2024"
         },
         {
             name: "Ana Martínez",
             asignatura: "Lengua y Literatura",
-            comment: "Fomenta la creatividad y el pensamiento crítico en sus alumnos."
+            comment: "Fomenta la creatividad y el pensamiento crítico en sus alumnos.",
+            date: "16/10/2024"
         },
         {
             name: "Luis Fernández",
             asignatura: "Educación Física",
-            comment: "Motiva a los estudiantes a mantenerse activos y saludables."
+            comment: "Motiva a los estudiantes a mantenerse activos y saludables.",
+            date: "16/10/2024"
         }
     ];
 
