@@ -28,6 +28,35 @@ function Estudiante() {
         }
     ];
 
+    const comments = [
+        {
+            name: "Juan Pérez",
+            asignatura: "Matemáticas",
+            comment: "Excelente en explicar conceptos complejos de manera sencilla."
+        },
+        {
+            name: "María López",
+            asignatura: "Historia",
+            comment: "Sus clases son muy dinámicas y llenas de ejemplos interesantes."
+        },
+        {
+            name: "Carlos García",
+            asignatura: "Ciencias",
+            comment: "Muy paciente y siempre dispuesto a ayudar a los estudiantes."
+        },
+        {
+            name: "Ana Martínez",
+            asignatura: "Lengua y Literatura",
+            comment: "Fomenta la creatividad y el pensamiento crítico en sus alumnos."
+        },
+        {
+            name: "Luis Fernández",
+            asignatura: "Educación Física",
+            comment: "Motiva a los estudiantes a mantenerse activos y saludables."
+        }
+    ];
+
+
     return (
         <div id="student" className="max-w-[1281px] mx-auto">
             <div className="flex items-center justify-between">
@@ -76,10 +105,9 @@ function Estudiante() {
                 </select>
             </div>
             <div className="grid grid-cols-2 gap-[49px]">
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
+                {
+                    comments.map((comment, index) => <CommentCard key={index} {...comment} />)
+                }
             </div>
         </div>
     )
