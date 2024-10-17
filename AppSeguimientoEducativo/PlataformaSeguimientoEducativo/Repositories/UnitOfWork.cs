@@ -10,7 +10,7 @@ namespace PlataformaSeguimientoEducativo.Repositories
         public IRoleRepository Roles { get; private set; }
         public IStudentRepository Students { get; private set; }
         public ICourseRepository Courses { get; private set; }
-        public ITeacherRepository Teachers { get; private set; }
+        //public ITeacherRepository Teachers { get; private set; }
         public IGradeRepository Grades { get; private set; }
 		public IParentRepository Parents { get; private set; }
 
