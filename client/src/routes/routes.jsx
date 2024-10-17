@@ -4,6 +4,7 @@ import Estudiante from "../pages/estudiante";
 import Docente from "../pages/profesor";
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import Login from '../pages/login'
 
 function MyRoutes() {
     return (
@@ -11,6 +12,7 @@ function MyRoutes() {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/estudiante" element={<Estudiante />} />
                 <Route path="/docente" element={<Docente />} />
             </Routes>
