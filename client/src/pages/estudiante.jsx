@@ -1,3 +1,5 @@
+import CommentCard from "../components/CommentCard";
+
 function Estudiante() {
     const calificaciones = [
         {
@@ -25,6 +27,41 @@ function Estudiante() {
             docente: "Prof. Fernández"
         }
     ];
+
+    const comments = [
+        {
+            name: "Juan Pérez",
+            asignatura: "Matemáticas",
+            comment: "Excelente en explicar conceptos complejos de manera sencilla.",
+            date: "16/10/2024"
+        },
+        {
+            name: "María López",
+            asignatura: "Historia",
+            comment: "Sus clases son muy dinámicas y llenas de ejemplos interesantes.",
+            date: "16/10/2024"
+        },
+        {
+            name: "Carlos García",
+            asignatura: "Ciencias",
+            comment: "Muy paciente y siempre dispuesto a ayudar a los estudiantes.",
+            date: "16/10/2024"
+        },
+        {
+            name: "Ana Martínez",
+            asignatura: "Lengua y Literatura",
+            comment: "Fomenta la creatividad y el pensamiento crítico en sus alumnos.",
+            date: "16/10/2024"
+        },
+        {
+            name: "Luis Fernández",
+            asignatura: "Educación Física",
+            comment: "Motiva a los estudiantes a mantenerse activos y saludables.",
+            date: "16/10/2024"
+        }
+    ];
+
+
     return (
         <div className="max-w-[1281px] mx-auto">
             <div className="py-10 sm:py-10 lg:py-0">
@@ -57,7 +94,6 @@ function Estudiante() {
                 </div>
             </div>
             <div id="student" className="mx-auto">
-
                 <div className="flex items-center justify-between">
                     <h2 className="text-[32px] font-extrabold">Historial Académico</h2>
                     <div className="space-x-[23px]">
@@ -103,22 +139,10 @@ function Estudiante() {
                         <option value="2024-3">2024-3</option>
                     </select>
                 </div>
-                <div className="mx-auto">
-                    <div className="space-y-[13px] p-[30px] w-[546px] rounded-[22px] mx-auto">
-                        <div className="flex gap-[15px] items-center">
-                            <div className="size-[68px] rounded-full bg-gray-300"></div>
-                            <div>
-                                <p className="font-semibold">Nombre completo del docente</p>
-                                <p className="text-[#686666]">
-                                    Asignatura <br />
-                                    00/00/0000
-                                </p>
-                            </div>
-                        </div>
-                        <p>
-                            Este es un ejemplo de comentario donde el docente dejará observaciones detalladas sobre el desempeño, áreas de mejora y recomendaciones del docente.
-                        </p>
-                    </div>
+                <div className="grid grid-cols-2 gap-[49px]">
+                    {
+                        comments.map((comment, index) => <CommentCard key={index} {...comment} />)
+                    }
                 </div>
             </div>
         </div>
