@@ -1,5 +1,42 @@
 [
   {
+    "ContainingType": "PlataformaSeguimientoEducativo.Controllers.GradesController",
+    "Method": "GetGradesByStudentId",
+    "RelativePath": "api/Grades/student/{studentId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "studentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PlataformaSeguimientoEducativo.Controllers.ParentsController",
+    "Method": "GetGradesForParent",
+    "RelativePath": "api/Parents/{parentId}/student/{studentId}/grades",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "parentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "studentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "PlataformaSeguimientoEducativo.Controllers.StudentController",
     "Method": "GetDashboard",
     "RelativePath": "api/Student/dashboard",

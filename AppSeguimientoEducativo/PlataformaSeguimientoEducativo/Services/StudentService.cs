@@ -33,18 +33,21 @@ namespace PlataformaSeguimientoEducativo.Services
                 StudentId = student.StudentId,
                 FullName = user.FullName,
                 Role = "Student",
+                Grade = student.Grade,
+                EnrollmentDate = student.EnrollmentDate,
                 Courses = courses.Select(c => new CourseInfoDto
                 {
                     CourseId = c.CourseId,
                     CourseName = c.CourseName,
                     TeacherName = c.Teacher.User.FullName,
+                    Subject = c.Teacher.Subject,
                     AcademicPeriodName = c.AcademicPeriod.PeriodName,
                     Grades = c.Grades
                         .Where(g => g.StudentId == student.StudentId)
                         .Select(g => new GradeDto
                         {
                             GradeValue = g.GradeValue,
-                            EvaluationDate = g.EvaluationDate
+                            EvaluationDate = g.EvaluationDate,
                         }).ToList(),
                     Feedbacks = c.Feedbacks
                         .Where(f => f.StudentId == student.StudentId)

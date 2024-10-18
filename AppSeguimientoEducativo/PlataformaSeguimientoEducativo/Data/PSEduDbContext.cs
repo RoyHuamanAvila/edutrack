@@ -23,6 +23,11 @@ namespace PlataformaSeguimientoEducativo.Data
         public DbSet<Communication> Communications { get; set; }
         public DbSet<Notification> Notifications { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -56,7 +61,7 @@ namespace PlataformaSeguimientoEducativo.Data
             // Teacher - User
             modelBuilder.Entity<Teacher>()
                 .HasOne(t => t.User)
-                .WithOne()
+                .WithOne(u => u.Teacher)
                 .HasForeignKey<Teacher>(t => t.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 

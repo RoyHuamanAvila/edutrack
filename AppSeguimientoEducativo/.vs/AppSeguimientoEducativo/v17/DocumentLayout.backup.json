@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|c:\\users\\asus\\documents\\c21-30-n-csharp-react\\appseguimientoeducativo\\plataformaseguimientoeducativo\\services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|solutionrelative:plataformaseguimientoeducativo\\services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|c:\\users\\asus\\documents\\c21-30-n-csharp-react\\appseguimientoeducativo\\plataformaseguimientoeducativo\\repositories\\courserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|solutionrelative:plataformaseguimientoeducativo\\repositories\\courserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|c:\\users\\asus\\documents\\c21-30-n-csharp-react\\appseguimientoeducativo\\plataformaseguimientoeducativo\\data\\psedudbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|solutionrelative:plataformaseguimientoeducativo\\data\\psedudbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|c:\\users\\asus\\documents\\c21-30-n-csharp-react\\appseguimientoeducativo\\plataformaseguimientoeducativo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FD67A3A4-FEEE-44B4-B154-3AB65CAAD082}|PlataformaSeguimientoEducativo\\PlataformaSeguimientoEducativo.csproj|solutionrelative:plataformaseguimientoeducativo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -71,40 +63,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StudentService.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Services\\StudentService.cs",
-              "RelativeDocumentMoniker": "PlataformaSeguimientoEducativo\\Services\\StudentService.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Services\\StudentService.cs*",
-              "RelativeToolTip": "PlataformaSeguimientoEducativo\\Services\\StudentService.cs*",
-              "ViewState": "AgIAACEAAAAAAAAAAAAYwDAAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T12:21:42.103Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CourseRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Repositories\\CourseRepository.cs",
-              "RelativeDocumentMoniker": "PlataformaSeguimientoEducativo\\Repositories\\CourseRepository.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Repositories\\CourseRepository.cs",
-              "RelativeToolTip": "PlataformaSeguimientoEducativo\\Repositories\\CourseRepository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBIAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T12:19:45.076Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PSEduDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Data\\PSEduDbContext.cs",
-              "RelativeDocumentMoniker": "PlataformaSeguimientoEducativo\\Data\\PSEduDbContext.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\Data\\PSEduDbContext.cs",
-              "RelativeToolTip": "PlataformaSeguimientoEducativo\\Data\\PSEduDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T11:19:56.105Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\appsettings.json",
+              "RelativeDocumentMoniker": "PlataformaSeguimientoEducativo\\appsettings.json",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\c21-30-n-csharp-react\\AppSeguimientoEducativo\\PlataformaSeguimientoEducativo\\appsettings.json",
+              "RelativeToolTip": "PlataformaSeguimientoEducativo\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-18T02:05:13.176Z",
               "EditorCaption": ""
             }
           ]
