@@ -1,4 +1,5 @@
 ﻿using PlataformaSeguimientoEducativo.DTOs;
+using PlataformaSeguimientoEducativo.Models;
 using PlataformaSeguimientoEducativo.Repositories;
 
 namespace PlataformaSeguimientoEducativo.Services
@@ -6,10 +7,17 @@ namespace PlataformaSeguimientoEducativo.Services
     public class StudentService : IStudentService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserService _userService;
 
-        public StudentService(IUnitOfWork unitOfWork)
+        public StudentService(IUnitOfWork unitOfWork, IUserService userService)
         {
             _unitOfWork = unitOfWork;
+            _userService = userService;
+        }
+
+        public async Task<Student> GetById(int id)
+        {
+            return _unitOfWork.Students.GetById(id);
         }
 
         public async Task<StudentDashboardDto> GetStudentDashboardAsync(int userId)
@@ -65,5 +73,17 @@ namespace PlataformaSeguimientoEducativo.Services
             return dashboard;
         }
 
+        public async Task<Student> Register(RegisterUserDto registerUserDto)
+        {
+            var user =  await _userService.RegisterUserAsync(registerUserDto);
+            var student = new Student
+            {
+                EnrollmentDate = DateTime.Now,
+                User = user
+            };
+            _unitOfWork.Students.Add(student);
+            await _unitOfWork.CompleteAsync();
+            return student;
+        }
     }
 }

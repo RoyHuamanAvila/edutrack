@@ -40,5 +40,33 @@ namespace PlataformaSeguimientoEducativo.Controllers
             var dashboard = await _studentService.GetStudentDashboardAsync(userId);
             return Ok(dashboard);
         }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterUserDto registerDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var newStudent = await _studentService.Register(registerDto);
+                return CreatedAtAction(nameof(GetStudent), new { id = newStudent.UserId }, newStudent);
+            }
+            catch (ApplicationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStudent(int id)
+        {
+            var student = await _studentService.GetById(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+            return Ok(student);
+        }
     }
 }
