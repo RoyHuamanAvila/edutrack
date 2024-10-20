@@ -12,8 +12,8 @@ using PlataformaSeguimientoEducativo.Data;
 namespace PlataformaSeguimientoEducativo.Migrations
 {
     [DbContext(typeof(PSEduDbContext))]
-    [Migration("20241013145543_MakePhoneNumberNullable")]
-    partial class MakePhoneNumberNullable
+    [Migration("20241020141547_UpdatePassewordProfile")]
+    partial class UpdatePassewordProfile
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -272,7 +272,6 @@ namespace PlataformaSeguimientoEducativo.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Grade")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
@@ -394,19 +393,19 @@ namespace PlataformaSeguimientoEducativo.Migrations
             modelBuilder.Entity("PlataformaSeguimientoEducativo.Models.Feedback", b =>
                 {
                     b.HasOne("PlataformaSeguimientoEducativo.Models.Course", "Course")
-                        .WithMany()
+                        .WithMany("Feedbacks")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("PlataformaSeguimientoEducativo.Models.Student", "Student")
-                        .WithMany()
+                        .WithMany("Feedbacks")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("PlataformaSeguimientoEducativo.Models.Teacher", "Teacher")
-                        .WithMany()
+                        .WithMany("Feedbacks")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -492,7 +491,7 @@ namespace PlataformaSeguimientoEducativo.Migrations
             modelBuilder.Entity("PlataformaSeguimientoEducativo.Models.Teacher", b =>
                 {
                     b.HasOne("PlataformaSeguimientoEducativo.Models.User", "User")
-                        .WithOne()
+                        .WithOne("Teacher")
                         .HasForeignKey("PlataformaSeguimientoEducativo.Models.Teacher", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -518,6 +517,8 @@ namespace PlataformaSeguimientoEducativo.Migrations
 
             modelBuilder.Entity("PlataformaSeguimientoEducativo.Models.Course", b =>
                 {
+                    b.Navigation("Feedbacks");
+
                     b.Navigation("Grades");
                 });
 
@@ -533,6 +534,8 @@ namespace PlataformaSeguimientoEducativo.Migrations
 
             modelBuilder.Entity("PlataformaSeguimientoEducativo.Models.Student", b =>
                 {
+                    b.Navigation("Feedbacks");
+
                     b.Navigation("Grades");
 
                     b.Navigation("ParentStudents");
@@ -541,6 +544,8 @@ namespace PlataformaSeguimientoEducativo.Migrations
             modelBuilder.Entity("PlataformaSeguimientoEducativo.Models.Teacher", b =>
                 {
                     b.Navigation("Courses");
+
+                    b.Navigation("Feedbacks");
                 });
 
             modelBuilder.Entity("PlataformaSeguimientoEducativo.Models.User", b =>
@@ -548,6 +553,9 @@ namespace PlataformaSeguimientoEducativo.Migrations
                     b.Navigation("ReceivedCommunications");
 
                     b.Navigation("SentCommunications");
+
+                    b.Navigation("Teacher")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

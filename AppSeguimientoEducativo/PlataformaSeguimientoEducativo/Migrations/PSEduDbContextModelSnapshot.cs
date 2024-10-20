@@ -269,7 +269,6 @@ namespace PlataformaSeguimientoEducativo.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Grade")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
