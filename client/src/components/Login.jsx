@@ -1,12 +1,12 @@
 import React from "react";
 import EyeIcon from "../assets/icon/icon";
+import patito from "../icons/patito.png"; // Ajusta la ruta según tu estructura de carpetas
 
 const Login = () => {
   return (
-    <div className="bg-white min-h-screen flex items-center justify-center">
+    <div className="bg-white h-[1026px ]flex items-center justify-center">
       <div className="w-full py-16 sm:py-24 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-0 space-y-12 lg:space-y-0">
-
           {/* Contenedor Izquierdo */}
           <div className="group relative rounded p-6 hidden lg:block h-full">
             <div className="flex flex-col justify-end h-full text-center">
@@ -22,15 +22,25 @@ const Login = () => {
           {/* Contenedor Derecho */}
           <div className="group relative bg-[#CDCDCD] p-6 h-full flex flex-col items-center justify-between">
             <div className="w-full flex flex-col items-center justify-center text-center">
-              <img src="" alt="Logo" className="object-cover w-[134px] h-[76px] bg-white rounded-md" />
+              <img
+                src={patito} // Usando la variable importada como src
+                alt="img"
+                className="w-[183px] h-[183px] object-cover rounded-full mr-4"
+              />
               <h3 className="mt-6 text-[48px] text-black p-5 font-bold">
                 Bienvenidos al Portal Académico
               </h3>
             </div>
 
-            <div className="space-y-6 flex flex-col items-center w-full">
+            {/* Agrega un formulario aquí */}
+            <form className="space-y-6 flex flex-col items-center w-full">
               <div className="w-[499px]">
-                <label htmlFor="email" className="block text-[16px] font-medium leading-6 text-gray-900">E-mail</label>
+                <label
+                  htmlFor="email"
+                  className="block text-[16px] font-medium leading-6 text-gray-900"
+                >
+                  E-mail
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -41,7 +51,10 @@ const Login = () => {
 
               <div className="w-[499px] relative">
                 <div className="flex items-center justify-between text-[16px] text-black">
-                  <label htmlFor="password" className="block text-[16px] font-medium leading-6 text-gray-900">
+                  <label
+                    htmlFor="password"
+                    className="block text-[16px] font-medium leading-6 text-gray-900"
+                  >
                     Contraseña
                   </label>
                   <p className="text-right text-black">
@@ -56,7 +69,7 @@ const Login = () => {
                     placeholder="Ingresar contraseña"
                   />
                   <span className="flex items-center justify-center pr-3 cursor-pointer">
-                    <EyeIcon className="w-5 h-5 text-gray-500 bg-white" /> 
+                    <EyeIcon className="w-5 h-5 text-gray-500 bg-white" />
                   </span>
                 </div>
               </div>
@@ -64,7 +77,7 @@ const Login = () => {
               <button className="w-[499px] bg-[#6B6969] text-white font-semibold py-2 px-4 rounded-md">
                 Iniciar Sesión
               </button>
-            </div>
+            </form>
 
             <div className="flex items-center space-x-2 text-[16px] text-black">
               <p>Asistencia al usuario - </p>
