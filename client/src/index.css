@@ -1,3 +1,28 @@
+/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+  @apply text-[3.5rem] font-[900];
+}
+
+h2 {
+  @apply text-[3rem] font-bold;
+}
+
+h3 {
+  @apply text-[2.5rem] font-bold;
+}
+
+h4 {
+  @apply text-[2rem] font-bold;
+}
+
+h5 {
+  @apply text-[1.5rem] font-bold;
+}
+
+h6 {
+  @apply text-[1rem] font-bold;
+}
