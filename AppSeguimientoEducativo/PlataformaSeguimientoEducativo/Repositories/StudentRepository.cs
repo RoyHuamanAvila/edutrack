@@ -19,8 +19,11 @@ namespace PlataformaSeguimientoEducativo.Repositories
         public async Task<Student> GetByUserIdWithDetailsAsync(int userId)
         {
             return await _context.Students
-                .Include(s => s.User)
-                .FirstOrDefaultAsync(s => s.UserId == userId);
+               .Include(s => s.User)
+                   .ThenInclude(u => u.Role)
+               .Include(s => s.Grades)
+               .Include(s => s.Feedbacks)
+               .FirstOrDefaultAsync(s => s.UserId == userId);
         }
     }
 }

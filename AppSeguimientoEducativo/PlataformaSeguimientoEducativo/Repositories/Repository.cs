@@ -11,7 +11,10 @@ namespace PlataformaSeguimientoEducativo.Repositories
         {
             _context = context;
         }
-
+        public virtual async Task<T> GetByIdAsync(int id)
+        {
+            return await _context.Set<T>().FindAsync(id);
+        }
         public T GetById(int id)
         {
             return _context.Set<T>().Find(id);

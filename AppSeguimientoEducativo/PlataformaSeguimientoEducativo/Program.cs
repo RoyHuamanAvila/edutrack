@@ -55,12 +55,13 @@ namespace PlataformaSeguimientoEducativo
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidateAudience = true, // Cambia esto a true si estás usando Audience
+                        ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                        ValidAudience = builder.Configuration["Jwt:Issuer"], // O usa un Audience separado
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                        ValidAudience = builder.Configuration["Jwt:Issuer"], 
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+                        NameClaimType = ClaimTypes.Email
                     };
                 });
 

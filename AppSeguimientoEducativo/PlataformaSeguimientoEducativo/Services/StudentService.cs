@@ -32,9 +32,11 @@ namespace PlataformaSeguimientoEducativo.Services
             {
                 StudentId = student.StudentId,
                 FullName = user.FullName,
-                Role = "Student",
+                Role = student.User.Role.RoleName,
                 Grade = student.Grade,
                 EnrollmentDate = student.EnrollmentDate,
+                ProfileImageUrl = student.User.ProfileImageUrl,
+                PhoneNumber = student.User.PhoneNumber,
                 Courses = courses.Select(c => new CourseInfoDto
                 {
                     CourseId = c.CourseId,

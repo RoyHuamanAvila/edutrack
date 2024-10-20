@@ -7,6 +7,8 @@
         public string Role { get; set; }
         public string Grade { get; set; }
         public DateTime EnrollmentDate { get; set; }
+        public string ProfileImageUrl { get; set; }
+        public string PhoneNumber { get; set; }
         public List<CourseInfoDto> Courses { get; set; }
     }
 }

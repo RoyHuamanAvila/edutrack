@@ -12,5 +12,6 @@ namespace PlataformaSeguimientoEducativo.Repositories
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
         void Update(T entity);
+        Task<T> GetByIdAsync(int id);
     }
 }

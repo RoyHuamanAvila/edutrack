@@ -4,6 +4,7 @@ using PlataformaSeguimientoEducativo.DTOs;
 using PlataformaSeguimientoEducativo.Models;
 using PlataformaSeguimientoEducativo.Repositories;
 using PlataformaSeguimientoEducativo.Services;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 namespace PlataformaSeguimientoEducativo.Controllers
@@ -51,6 +52,85 @@ namespace PlataformaSeguimientoEducativo.Controllers
             catch (ApplicationException ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPut("profile")]
+        public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto updateProfileDto)
+        {
+            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value ??
+                            User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                return BadRequest("Unable to identify user.");
+            }
+
+            try
+            {
+                var updatedUser = await _userService.UpdateProfileAsync(userEmail, updateProfileDto);
+                return Ok(new
+                {
+                    updatedUser.UserId,
+                    updatedUser.FullName,
+                    updatedUser.Email,
+                    updatedUser.PhoneNumber,
+                    updatedUser.ProfileImageUrl
+                });
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound("User not found.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "An error occurred while updating the profile.");
+            }
+        }
+
+        [HttpPut("change-password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto changePasswordDto)
+        {
+            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value ??
+                            User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+                {
+                    return BadRequest("Identificador de usuario no válido");
+                }
+
+                try
+                {
+                    await _userService.ChangePasswordAsync(userId, changePasswordDto);
+                    return Ok(new { message = "Contraseña cambiada exitosamente" });
+                }
+                catch (KeyNotFoundException)
+                {
+                    return NotFound("User not found");
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return BadRequest(new { message = ex.Message });
+                }
+            }
+
+            try
+            {
+                await _userService.ChangePasswordAsync(userEmail, changePasswordDto);
+                return Ok(new { message = "Contraseña cambiada exitosamente" });
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound("User not found");
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
             }
         }
 

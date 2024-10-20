@@ -87,6 +87,7 @@ namespace PlataformaSeguimientoEducativo.Services
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Role, user.Role.RoleName) 
             };
 
@@ -153,6 +154,58 @@ namespace PlataformaSeguimientoEducativo.Services
 
 
             return dashboard;
+        }
+        public async Task<User> UpdateProfileAsync(string userEmail, UpdateProfileDto updateProfileDto)
+        {
+            var user = await _unitOfWork.Users.GetUserByEmailAsync(userEmail);
+            if (user == null)
+            {
+                throw new KeyNotFoundException("User not found");
+            }
+
+            user.PhoneNumber = updateProfileDto.PhoneNumber;
+            user.ProfileImageUrl = updateProfileDto.ProfileImageUrl;
+
+            _unitOfWork.Users.Update(user);
+            await _unitOfWork.CompleteAsync();
+
+            return user;
+        }
+
+        public async Task ChangePasswordAsync(string userEmail, ChangePasswordDto changePasswordDto)
+        {
+            var user = await _unitOfWork.Users.GetUserByEmailAsync(userEmail);
+            if (user == null)
+            {
+                throw new KeyNotFoundException("Usuario no encontrado");
+            }
+
+            await ChangePasswordForUser(user, changePasswordDto);
+        }
+
+        public async Task ChangePasswordAsync(int userId, ChangePasswordDto changePasswordDto)
+        {
+            var user = await _unitOfWork.Users.GetByIdAsync(userId);
+            if (user == null)
+            {
+                throw new KeyNotFoundException("Usuario no encontrado");
+            }
+
+            await ChangePasswordForUser(user, changePasswordDto);
+        }
+
+        private async Task ChangePasswordForUser(User user, ChangePasswordDto changePasswordDto)
+        {
+            var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, changePasswordDto.CurrentPassword);
+            if (result == PasswordVerificationResult.Failed)
+            {
+                throw new InvalidOperationException("La contraseña actual es incorrecta");
+            }
+
+            user.PasswordHash = _passwordHasher.HashPassword(user, changePasswordDto.NewPassword);
+
+            _unitOfWork.Users.Update(user);
+            await _unitOfWork.CompleteAsync();
         }
     }
 }

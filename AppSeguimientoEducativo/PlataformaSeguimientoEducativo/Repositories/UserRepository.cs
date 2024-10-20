@@ -10,7 +10,17 @@ namespace PlataformaSeguimientoEducativo.Repositories
         public UserRepository(PSEduDbContext context) : base(context)
         {
         }
-
+        public async Task<User> GetByIdAsync(int id)
+        {
+            return await _context.Users
+                .Include(u => u.Role)
+                .FirstOrDefaultAsync(u => u.UserId == id);
+        }
+        public async Task<User> GetByIdAsync(string userEmail)
+        {
+            return await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == userEmail);
+        }
         public async Task<User> GetUserByEmailAsync(string email)
         {
             return await _context.Users
