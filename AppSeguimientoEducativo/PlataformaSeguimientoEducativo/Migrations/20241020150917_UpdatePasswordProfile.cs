@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PlataformaSeguimientoEducativo.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdatePassewordProfile : Migration
+    public partial class UpdatePasswordProfile : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
-        {/*
+        {
             migrationBuilder.CreateTable(
                 name: "AcademicPeriods",
                 columns: table => new
@@ -25,7 +25,7 @@ namespace PlataformaSeguimientoEducativo.Migrations
                 {
                     table.PrimaryKey("PK_AcademicPeriods", x => x.AcademicPeriodId);
                 });
-            
+
             migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
@@ -290,27 +290,27 @@ namespace PlataformaSeguimientoEducativo.Migrations
                         principalColumn: "StudentId",
                         onDelete: ReferentialAction.Cascade);
                 });
-            
+
             migrationBuilder.CreateIndex(
                 name: "IX_Communications_ReceiverId",
                 table: "Communications",
                 column: "ReceiverId");
-            
+
             migrationBuilder.CreateIndex(
                 name: "IX_Communications_SenderId",
                 table: "Communications",
                 column: "SenderId");
- 
+
             migrationBuilder.CreateIndex(
                 name: "IX_Courses_AcademicPeriodId",
                 table: "Courses",
                 column: "AcademicPeriodId");
-            
+
             migrationBuilder.CreateIndex(
                 name: "IX_Courses_TeacherId",
                 table: "Courses",
                 column: "TeacherId");
-            
+
             migrationBuilder.CreateIndex(
                 name: "IX_Feedbacks_CourseId",
                 table: "Feedbacks",
@@ -363,14 +363,13 @@ namespace PlataformaSeguimientoEducativo.Migrations
                 table: "Teachers",
                 column: "UserId",
                 unique: true);
-           
+
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
-             */
         }
-           
+
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {

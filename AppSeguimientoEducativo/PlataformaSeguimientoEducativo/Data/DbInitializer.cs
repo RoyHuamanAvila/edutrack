@@ -7,7 +7,7 @@ namespace PlataformaSeguimientoEducativo.Data
     {
         public static void Initialize(PSEduDbContext context)
         {
-            context.Database.Migrate();
+            //context.Database.Migrate();
 
             // Verificar si ya hay roles en la base de datos
             if (context.Roles.Any())
