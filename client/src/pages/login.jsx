@@ -10,6 +10,8 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const DB_DOMAIN = import.meta.env.VITE_DB_DOMAIN;
+
 
   // Función para manejar el inicio de sesión
   const handleLogin = async (e) => {
@@ -27,7 +29,7 @@ const Login = () => {
     try {
       // Hacer la solicitud a la API con el email y la contraseña
       const response = await axios.post(
-        "https://www.c21-30-n-csharp-react.somee.com/api/Users/login",
+        `${DB_DOMAIN}/Users/login`,
         {
           email: email,
           password,
