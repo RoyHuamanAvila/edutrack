@@ -140,7 +140,7 @@ const Login = () => {
               </p>
               <button
                 type="submit"
-                className="w-full bg-[#722B76] text-white-1 font-semibold py-2 px-4 rounded-md  transition duration-200"
+                className="w-full bg-primary text-white-1 font-semibold py-2 px-4 rounded-md  transition duration-200"
                 disabled={loading} // Desactivar el botón mientras se carga
               >
                 {loading ? "Cargando..." : "Iniciar Sesión"}
