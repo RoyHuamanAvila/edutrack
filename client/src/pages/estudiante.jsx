@@ -1,32 +1,11 @@
+import { useEffect, useState } from "react";
+import axios from 'axios'
 import CommentCard from "../components/CommentCard";
+import { getToken } from "../token";
 
 function Estudiante() {
-  const calificaciones = [
-    {
-      asignatura: "Matemáticas",
-      calificacion: 85,
-      promedio: 88,
-      docente: "Prof. García",
-    },
-    {
-      asignatura: "Historia",
-      calificacion: 90,
-      promedio: 92,
-      docente: "Prof. López",
-    },
-    {
-      asignatura: "Ciencias",
-      calificacion: 78,
-      promedio: 80,
-      docente: "Prof. Martínez",
-    },
-    {
-      asignatura: "Literatura",
-      calificacion: 92,
-      promedio: 89,
-      docente: "Prof. Fernández",
-    },
-  ];
+  const DB_DOMAIN = import.meta.env.VITE_DB_DOMAIN;
+  const token = getToken();
 
   const comments = [
     {
@@ -62,6 +41,27 @@ function Estudiante() {
       date: "16/10/2024",
     },
   ];
+
+  const [student, setStudent] = useState();
+
+  const fetchUser = async () => {
+    try {
+      console.log('Token: ', token)
+      const response = await axios.get(`${DB_DOMAIN}/student/dashboard`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log(response.data);
+      setStudent(response.data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, [])
 
   return (
     <div className="max-w-[1281px] mx-auto">
@@ -130,14 +130,14 @@ function Estudiante() {
           </thead>
           <tbody>
             {
-              calificaciones.map(({ asignatura, calificacion, docente, promedio }, index) =>
-                <tr className="even:bg-white-1 odd:bg-white-2 text-sm" key={index}>
-                  <td className="py-[25px] px-[10px]">{asignatura}</td>
-                  <td className="py-[25px] px-[10px]">{calificacion}</td>
-                  <td className="py-[25px] px-[10px]">{promedio}</td>
-                  <td className="py-[25px] px-[10px]">{docente}</td>
-                </tr>
-              )
+              /*  student.courses.map(({ asignatura, calificacion, docente, promedio }, index) =>
+                 <tr className="even:bg-white-1 odd:bg-white-2 text-sm" key={index}>
+                   <td className="py-[25px] px-[10px]">{asignatura}</td>
+                   <td className="py-[25px] px-[10px]">{calificacion}</td>
+                   <td className="py-[25px] px-[10px]">{promedio}</td>
+                   <td className="py-[25px] px-[10px]">{docente}</td>
+                 </tr>
+               ) */
             }
           </tbody>
         </table>
