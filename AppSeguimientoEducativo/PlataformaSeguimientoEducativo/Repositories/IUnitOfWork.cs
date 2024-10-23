@@ -10,6 +10,7 @@ namespace PlataformaSeguimientoEducativo.Repositories
         ICourseRepository Courses { get; }
         IParentRepository Parents { get; }
         IGradeRepository Grades { get; }
+        ITeacherRepository Teachers { get; }
         Task<int> CompleteAsync();
     }
 }

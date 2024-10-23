@@ -73,10 +73,6 @@ namespace PlataformaSeguimientoEducativo.Controllers
         public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
         {
             var student = await _studentService.GetAllWithUserAsyn();
-            if (student == null)
-            {
-                return NotFound();
-            }
             return Ok(student);
         }
         [HttpDelete("{id}")]

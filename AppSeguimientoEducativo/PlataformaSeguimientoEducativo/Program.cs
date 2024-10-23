@@ -32,7 +32,8 @@ namespace PlataformaSeguimientoEducativo
             builder.Services.AddScoped<IStudentService, StudentService>();
             builder.Services.AddScoped<IParentService, ParentService>();
 			builder.Services.AddScoped<IGradeService, GradeService>();
-			builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ITeacherService, TeacherService>();
+            builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 			builder.Services.AddControllers().AddJsonOptions(options =>
