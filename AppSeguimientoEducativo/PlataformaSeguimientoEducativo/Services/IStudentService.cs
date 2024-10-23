@@ -9,5 +9,6 @@ namespace PlataformaSeguimientoEducativo.Services
         Task<Student> Register(RegisterUserDto registerUserDto);
         Task<Student> GetById(int id);
         Task<IEnumerable<Student>> GetAllWithUserAsyn();
+        Task DeleteStudentAsync(int studentId);
     }
 }

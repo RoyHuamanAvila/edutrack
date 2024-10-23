@@ -79,5 +79,11 @@ namespace PlataformaSeguimientoEducativo.Controllers
             }
             return Ok(student);
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteStudent(int id)
+        {
+            await _studentService.DeleteStudentAsync(id);
+            return NoContent();
+        }
     }
 }

@@ -90,5 +90,10 @@ namespace PlataformaSeguimientoEducativo.Services
             var students = await _unitOfWork.Students.GetAllWithUserAsync();
             return students;
         }
+
+        public async Task DeleteStudentAsync(int studentId)
+        {
+            await _unitOfWork.Students.DeleteAsync(studentId);
+        }
     }
 }

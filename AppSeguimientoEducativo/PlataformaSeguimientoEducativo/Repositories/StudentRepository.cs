@@ -41,5 +41,15 @@ namespace PlataformaSeguimientoEducativo.Repositories
                     .ThenInclude(u => u.Role)
                 .FirstOrDefaultAsync(s => s.StudentId == studentId);
         }
+
+        public async Task DeleteAsync(int studentId)
+        {
+            var student = await _context.Students.FindAsync(studentId);
+            if (student != null)
+            {
+                _context.Students.Remove(student);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
