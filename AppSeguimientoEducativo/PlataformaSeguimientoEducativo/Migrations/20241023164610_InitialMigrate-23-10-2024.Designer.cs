@@ -12,8 +12,8 @@ using PlataformaSeguimientoEducativo.Data;
 namespace PlataformaSeguimientoEducativo.Migrations
 {
     [DbContext(typeof(PSEduDbContext))]
-    [Migration("20241020150917_UpdatePasswordProfile")]
-    partial class UpdatePasswordProfile
+    [Migration("20241023164610_InitialMigrate-23-10-2024")]
+    partial class InitialMigrate23102024
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

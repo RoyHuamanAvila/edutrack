@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PlataformaSeguimientoEducativo.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdatePasswordProfile : Migration
+    public partial class InitialMigrate23102024 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
