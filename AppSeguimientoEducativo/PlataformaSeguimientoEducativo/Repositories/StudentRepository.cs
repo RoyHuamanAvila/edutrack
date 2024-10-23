@@ -9,7 +9,7 @@ namespace PlataformaSeguimientoEducativo.Repositories
         public StudentRepository(PSEduDbContext context) : base(context)
         {
         }
-
+      
         public async Task<Student> GetByUserIdAsync(int userId)
         {
             return await _context.Students
@@ -24,6 +24,22 @@ namespace PlataformaSeguimientoEducativo.Repositories
                .Include(s => s.Grades)
                .Include(s => s.Feedbacks)
                .FirstOrDefaultAsync(s => s.UserId == userId);
+        }
+        public async Task<IEnumerable<Student>> GetAllWithUserAsync()
+        {
+
+            return await _context.Students
+                .Include(s => s.User)
+                    .ThenInclude(u => u.Role)
+                .ToListAsync();
+        }
+
+        public async Task<Student> GetByIdWithUserAsync(int studentId)
+        {
+            return await _context.Students
+                .Include(s => s.User)
+                    .ThenInclude(u => u.Role)
+                .FirstOrDefaultAsync(s => s.StudentId == studentId);
         }
     }
 }

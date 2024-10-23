@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PlataformaSeguimientoEducativo.DTOs;
+using PlataformaSeguimientoEducativo.Models;
 using PlataformaSeguimientoEducativo.Services;
 using System.Security.Claims;
 
@@ -8,12 +9,12 @@ namespace PlataformaSeguimientoEducativo.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class StudentController : ControllerBase
+    public class StudentsController : ControllerBase
     {
         private readonly IStudentService _studentService;
         private readonly IUserService _userService;
 
-        public StudentController(IStudentService studentService, IUserService userService)
+        public StudentsController(IStudentService studentService, IUserService userService)
         {
             _studentService = studentService;
             _userService = userService;
@@ -62,6 +63,16 @@ namespace PlataformaSeguimientoEducativo.Controllers
         public async Task<IActionResult> GetStudent(int id)
         {
             var student = await _studentService.GetById(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+            return Ok(student);
+        }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
+        {
+            var student = await _studentService.GetAllWithUserAsyn();
             if (student == null)
             {
                 return NotFound();

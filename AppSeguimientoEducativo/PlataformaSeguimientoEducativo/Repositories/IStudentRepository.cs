@@ -6,5 +6,7 @@ namespace PlataformaSeguimientoEducativo.Repositories
     {
         Task<Student> GetByUserIdAsync(int userId);
         Task<Student> GetByUserIdWithDetailsAsync(int userId);
+        Task<IEnumerable<Student>> GetAllWithUserAsync();
+        Task<Student> GetByIdWithUserAsync(int studentId);
     }
 }

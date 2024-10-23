@@ -17,7 +17,7 @@ namespace PlataformaSeguimientoEducativo.Services
 
         public async Task<Student> GetById(int id)
         {
-            return _unitOfWork.Students.GetById(id);
+            return await _unitOfWork.Students.GetByIdWithUserAsync(id);
         }
 
         public async Task<StudentDashboardDto> GetStudentDashboardAsync(int userId)
@@ -84,6 +84,11 @@ namespace PlataformaSeguimientoEducativo.Services
             _unitOfWork.Students.Add(student);
             await _unitOfWork.CompleteAsync();
             return student;
+        }
+        public async Task<IEnumerable<Student>> GetAllWithUserAsyn()
+        {
+            var students = await _unitOfWork.Students.GetAllWithUserAsync();
+            return students;
         }
     }
 }

@@ -8,5 +8,6 @@ namespace PlataformaSeguimientoEducativo.Services
         Task<StudentDashboardDto> GetStudentDashboardAsync(int userId);
         Task<Student> Register(RegisterUserDto registerUserDto);
         Task<Student> GetById(int id);
+        Task<IEnumerable<Student>> GetAllWithUserAsyn();
     }
 }
