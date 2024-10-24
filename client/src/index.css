@@ -26,3 +26,7 @@ h5 {
 h6 {
   @apply text-[1rem] font-bold;
 }
+
+body {
+  @apply bg-white-1;
+}

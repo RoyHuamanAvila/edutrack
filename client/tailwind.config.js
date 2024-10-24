@@ -41,6 +41,7 @@ export default {
         h5: "1.5rem",
         h6: "1rem",
         xs: "0.625rem",
+        sm: "0.75rem",
       },
       fontWeight: {
         h1: 900,
