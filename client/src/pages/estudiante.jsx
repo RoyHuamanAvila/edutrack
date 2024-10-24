@@ -144,7 +144,7 @@ function Estudiante() {
         </table>
 
         {/* Promedio del periodo */}
-        <section className="mx-auto w-max rounded-lg border-brand-primary border py-6 px-8 mb-20">
+        <section className="mx-auto w-max rounded-lg border-brand-primary border py-2 px-8">
           <span className="text-brand-primary font-bold text-lg">Promedio del Periodo</span> 9.3
         </section>
 
@@ -163,7 +163,7 @@ function Estudiante() {
         <section className="py-8">
 
           {/* Dropdown periodo escolar */}
-          <div className="w-full flex justify-center">
+          <div className="w-full flex justify-center mb-14">
             <DropdownComentarios>
               Periodo
             </DropdownComentarios>
