@@ -1,4 +1,5 @@
-import EyeIcon from "../assets/icon/icon";
+import { EyeIcon } from "../assets/icon/icon";
+import { EyeIcon2 } from "../assets/icon/icon2";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +11,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const DB_DOMAIN = import.meta.env.VITE_DB_DOMAIN;
 
   // Función para manejar el inicio de sesión
@@ -120,7 +122,7 @@ const Login = () => {
                 </div>
                 <div className="flex items-center border border-gray-300 rounded-md shadow-sm mt-1">
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"} // Cambia entre texto visible y contraseña oculta
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -128,8 +130,22 @@ const Login = () => {
                     placeholder="Ingresar contraseña"
                     required
                   />
-                  <span className="flex items-center justify-center pr-3 cursor-pointer">
-                    <EyeIcon className="w-5 h-5 text-gray-500 bg-white" />
+                  <span
+                    className="flex items-center justify-center pr-3 cursor-pointer"
+                    onClick={() => {
+                      setShowPassword(!showPassword); // Alternar visibilidad
+                      if (!showPassword) {
+                        console.log("Mostrar contraseña");
+                      } else {
+                        console.log("Ocultar contraseña");
+                      }
+                    }}
+                  >
+                    {showPassword ? (
+                      <EyeIcon2 className="w-5 h-5 text-gray-500 bg-white bg-slate-500" /> // Ícono para ocultar la contraseña
+                    ) : (
+                      <EyeIcon className="w-5 h-5 text-gray-500 bg-white" /> // Ícono para mostrar la contraseña
+                    )}
                   </span>
                 </div>
               </div>
