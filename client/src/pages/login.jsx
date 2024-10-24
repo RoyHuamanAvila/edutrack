@@ -12,7 +12,6 @@ const Login = () => {
   const navigate = useNavigate();
   const DB_DOMAIN = import.meta.env.VITE_DB_DOMAIN;
 
-
   // Función para manejar el inicio de sesión
   const handleLogin = async (e) => {
     e.preventDefault(); // Evitar que el formulario se envíe de manera predeterminada
@@ -28,13 +27,10 @@ const Login = () => {
 
     try {
       // Hacer la solicitud a la API con el email y la contraseña
-      const response = await axios.post(
-        `${DB_DOMAIN}/Users/login`,
-        {
-          email: email,
-          password,
-        }
-      );
+      const response = await axios.post(`${DB_DOMAIN}/Users/login`, {
+        email: email,
+        password,
+      });
 
       console.log("Respuesta de la API:", response.data); // Manejar la respuesta de la API
       const { token } = response.data; // Asegúrate de que esto sea correcto
@@ -63,11 +59,11 @@ const Login = () => {
           <img
             src="../public/imagenes/Portada.png"
             alt="Portada del monitoreo de rendimientos"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover "
           />
-          <div className=" bg-[#ffffff] absolute bottom-20 left-1/2 transform -translate-x-1/2 w-[384px] h-[90px] flex items-center justify-center bg-white rounded-lg p-4 shadow-lg text-center">
+          <div className=" bg-[#ffffff] border border-brand-primary absolute bottom-20 left-1/2 transform -translate-x-1/2 w-[384px] h-[90px] flex items-center justify-center bg-white rounded-lg p-4 shadow-lg text-center">
             <div>
-              <h2 className="text-[24px] font-bold text-[#722B76]">
+              <h2 className="text-[24px] font-bold text-brand-primary">
                 Monitoreo de rendimientos
               </h2>
               <h3 className="text-[20px] text-[#4A4A4A]">
@@ -79,13 +75,13 @@ const Login = () => {
         <div className="p-4 w-[592px]">
           <div className="p-16 w-full flex flex-col items-start text-left mb-8">
             {/* Contenedor de logo y título */}
-            <div className="w-full  p-4 rounded-lg">
+            <div className="w-full  rounded-lg ">
               <img
                 src="\Logo.jpg"
                 alt="Logo del Portal Académico"
-                className="w-[192px] h-[48px] mb-2"
+                className="w-[192px] h-[48px] "
               />
-              <h3 className="text-[48px] text-black font-bold mb-4">
+              <h3 className="text-[48px] text-black font-bold  ">
                 Bienvenidos al Portal Académico
               </h3>
             </div>
@@ -100,15 +96,15 @@ const Login = () => {
                   htmlFor="email"
                   className="block text-[16px] font-medium leading-6 text-gray-900"
                 >
-                  E-mail
+                  Correo
                 </label>
                 <input
                   type="email"
                   id="email"
                   value={email} // Valor del input vinculado al estado email
                   onChange={(e) => setEmail(e.target.value)}
-                  className="mt-1 block w-full py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none"
-                  placeholder="Ingresar correo electrónico"
+                  className="mt-1 block w-full  px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none"
+                  placeholder="Ingresar Correo Electrónico"
                   required
                 />
               </div>
@@ -142,18 +138,13 @@ const Login = () => {
               </p>
               <button
                 type="submit"
-                className="w-full bg-primary text-white-1 font-semibold py-2 px-4 rounded-md  transition duration-200"
+                className="w-[204px] bg-brand-primary text-white-1 font-semibold py-2 px-4 rounded-md  transition duration-200"
                 disabled={loading} // Desactivar el botón mientras se carga
               >
                 {loading ? "Cargando..." : "Iniciar Sesión"}
               </button>
               {error && <p className="text-red-500 mt-2">{error}</p>}
             </form>
-
-            <div className="flex items-center space-x-2 text-[16px] text-black mt-4">
-              <p>Asistencia al usuario - </p>
-              <p className="font-bold text-black cursor-pointer">Contáctenos</p>
-            </div>
           </div>
         </div>
       </div>
