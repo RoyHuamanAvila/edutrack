@@ -32,34 +32,32 @@ function Estudiante() {
     {
       name: "Juan Pérez",
       asignatura: "Matemáticas",
-      comment: "Excelente en explicar conceptos complejos de manera sencilla.",
+      comment: "Has mejorado mucho en la comprensión de la gramática y redacción en español. Sigue esforzándote en ampliar tu vocabulario para expresarte con más precisión.",
       date: "16/10/2024",
+      img: "https://s3-alpha-sig.figma.com/img/0137/6a01/f8898b4d066033af55f17b0f52d39b46?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=pT7Ii9ckiq7iMG4-oihX8erT8he0ShxC8bUVoENQl3~Izq2PgHCkCPtlBx7sHLPy2G6W-zz0xZHa6eXQuQlbdYsr93r9P0dcrAP2EdYQYsLzwV1FwwKaZuleWXlwGJ-2v~8RZfLpCAxka8~LsveNj9t3ERVQv0uufcPFehuE96~FEFkdeKWAooiTdSyB6hB1EYmVjM7L8I9GzDNNBUrbAbcuOf~03G~NkxlAaoru8XdfzKkIuVb81oJtrA5635j~aG8phFK7-UxDkHx4PQuE1CD1k7M~6eZYihN6Kplu3rgFOzw-TEboz4TWQrxOTeQHmYmq3sV6GnnxUoKGSLfewQ__"
     },
     {
       name: "María López",
       asignatura: "Historia",
       comment:
-        "Sus clases son muy dinámicas y llenas de ejemplos interesantes.",
+        "Has mejorado mucho en la comprensión de la gramática y redacción en español. Sigue esforzándote en ampliar tu vocabulario para expresarte con más precisión.",
       date: "16/10/2024",
+      img: 'https://s3-alpha-sig.figma.com/img/25d1/a770/20008b9e3f08babd1f67f01cdb8f89d6?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TmDWdjvi5DAlFMcJlHwN69y~dAwos~k3PcZdg-Th3qoj2aasEfMTKgoBNE96o0PtNeTjEyD908bg0FUq2QuG32~WaHFfB8mymfgl4CHuuKztts7KJ8RljIdzWX0qMnRiN6HPXs1pXiOjPZv5ZvXEPfbxrGNjYhe0xjz8VkD1wU3AhtFwevnV-EDow6SFRrl681kvazFitFdeF3ZSkxE5GviHHeuGiBiEnlUZJtImv-t8-X9il9Au0awYAjV5In~oQF7ZI6t5UM7e4MT5FZfEfiDd~yEvXlx-JTU3qYrqFNeM189gBc7SLNuwxACFH9~fCKasZIGrgJ6fmq7iah2uzw__'
     },
     {
       name: "Carlos García",
       asignatura: "Ciencias",
-      comment: "Muy paciente y siempre dispuesto a ayudar a los estudiantes.",
+      comment: "Has mejorado mucho en la comprensión de la gramática y redacción en español. Sigue esforzándote en ampliar tu vocabulario para expresarte con más precisión.",
       date: "16/10/2024",
+      img: 'https://s3-alpha-sig.figma.com/img/2cc3/ba92/c0a402567bf37e095262f204b3eb3c99?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=glLoEH76iElOPQwm5Yd608lK~2LEAmdwaPb2kUz5EEAVlWDqvxTZRBssOcYcL32MedneUlDhxxMBE9dVMT5akoLO1IDLHbdn1UfvOvrK~uOGklPyVfglB-X9sGqtmLW~jm6ef~TvIGUjXvrns~D9i560oWSN9RFA~yNEj0P-Diqkfon47pH9z9xpZObgVglwf3P78wwQxIzIeMWI0ONo4WxYP5LIHOgtC75BQY90gcTNhaF6zkPPG-yzuyyd16A7~Z0pEeBLMeBSg3zyL3OJ7iQA5Ew9okqK6q9giLXTJ5oBVtWXU0E53dUuWVBT7WPE9uQswiemPVYQtkSNf5E5xg__'
     },
     {
       name: "Ana Martínez",
       asignatura: "Lengua y Literatura",
       comment:
-        "Fomenta la creatividad y el pensamiento crítico en sus alumnos.",
+        "Has mejorado mucho en la comprensión de la gramática y redacción en español. Sigue esforzándote en ampliar tu vocabulario para expresarte con más precisión.",
       date: "16/10/2024",
-    },
-    {
-      name: "Luis Fernández",
-      asignatura: "Educación Física",
-      comment: "Motiva a los estudiantes a mantenerse activos y saludables.",
-      date: "16/10/2024",
+      img: 'https://s3-alpha-sig.figma.com/img/85ff/b33a/47350a8e1c89e2ce276e4cb0255e10f3?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=P3xIC6zUkYfw8xiYVD4SinYD7EtWuUcXcz27~xwxtiYZMTCtVjX7NxHjU6XXf5l7MmUkeq3kCUZ4XPlu3KW-DxLz0x1eVZ47OVMULR1H-pN4Spfl9hj3RsJ3dLcC-YSJ3l~2NzpbKhoj~t1CxC34r17gxuU8ySJfreVxh3Xprto6x1LM6Nfn98TUAHLucXri-bZw9SsKrtQGEF4fKqQ1ypXI7wn7-qV1PeoHs-wXg5oHZQK2je3HTwGJlSyJEtgk7hVl9sqbStTQ9kUQ0ysi3ZSjwCYIS3faIUycegIgyvRgjZeVgB6qyZROuNTkL9DXCRBoZ5l7ZesiSiRE5MlJiA__'
     },
   ];
 
@@ -177,7 +175,7 @@ function Estudiante() {
           </form>
 
           {/* Lista de comentarios */}
-          <div className="grid grid-cols-2 gap-[49px]">
+          <div className="grid grid-cols-2 gap-8 px-[104px]">
             {
               comments.map((comment, index) => <CommentCard key={index} {...comment} />)
             }
