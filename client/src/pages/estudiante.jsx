@@ -1,32 +1,12 @@
+import { useEffect, useState } from "react";
+import axios from 'axios'
 import CommentCard from "../components/CommentCard";
+import { getToken } from "../token";
+import useDropdown from "../hooks/useDropdown";
 
 function Estudiante() {
-  const calificaciones = [
-    {
-      asignatura: "Matemáticas",
-      calificacion: 85,
-      promedio: 88,
-      docente: "Prof. García",
-    },
-    {
-      asignatura: "Historia",
-      calificacion: 90,
-      promedio: 92,
-      docente: "Prof. López",
-    },
-    {
-      asignatura: "Ciencias",
-      calificacion: 78,
-      promedio: 80,
-      docente: "Prof. Martínez",
-    },
-    {
-      asignatura: "Literatura",
-      calificacion: 92,
-      promedio: 89,
-      docente: "Prof. Fernández",
-    },
-  ];
+  const DB_DOMAIN = import.meta.env.VITE_DB_DOMAIN;
+  const token = getToken();
 
   const comments = [
     {
@@ -60,6 +40,32 @@ function Estudiante() {
       img: 'https://s3-alpha-sig.figma.com/img/85ff/b33a/47350a8e1c89e2ce276e4cb0255e10f3?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=P3xIC6zUkYfw8xiYVD4SinYD7EtWuUcXcz27~xwxtiYZMTCtVjX7NxHjU6XXf5l7MmUkeq3kCUZ4XPlu3KW-DxLz0x1eVZ47OVMULR1H-pN4Spfl9hj3RsJ3dLcC-YSJ3l~2NzpbKhoj~t1CxC34r17gxuU8ySJfreVxh3Xprto6x1LM6Nfn98TUAHLucXri-bZw9SsKrtQGEF4fKqQ1ypXI7wn7-qV1PeoHs-wXg5oHZQK2je3HTwGJlSyJEtgk7hVl9sqbStTQ9kUQ0ysi3ZSjwCYIS3faIUycegIgyvRgjZeVgB6qyZROuNTkL9DXCRBoZ5l7ZesiSiRE5MlJiA__'
     },
   ];
+
+  const listPeriod = ['2024-3', '2024-2', '2024-1']
+
+  const { DropdownComponent: DropdownComentarios } = useDropdown('Comentarios', 'Comentarios', listPeriod);
+  const { DropdownComponent: DropdownHistorial } = useDropdown('Dropdown_Historial', 'Dropdown_Historial', listPeriod);
+
+  const [student, setStudent] = useState();
+
+  const fetchUser = async () => {
+    try {
+      console.log('Token: ', token)
+      const response = await axios.get(`${DB_DOMAIN}/student/dashboard`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log(response.data);
+      setStudent(response.data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, [])
 
   return (
     <div className="max-w-[1281px] mx-auto">
@@ -108,12 +114,9 @@ function Estudiante() {
         {/* Encabezado historial académico */}
         <div className="flex items-center justify-between mb-[10px]">
           <h2 className="text-h3 font-extrabold">Historial Académico</h2>
-          <div className="space-x-[23px]">
-            <span className="text-[#595353] font-extrabold">Periodo Seleccionado</span>
-            <select name="periodo" id="periodo">
-              <option value="2024-3">2024-3</option>
-            </select>
-          </div>
+          <DropdownHistorial>
+            Periodo
+          </DropdownHistorial>
         </div>
 
         {/* Tabla de notas */}
@@ -128,14 +131,14 @@ function Estudiante() {
           </thead>
           <tbody>
             {
-              calificaciones.map(({ asignatura, calificacion, docente, promedio }, index) =>
-                <tr className="even:bg-white-1 odd:bg-white-2 text-sm" key={index}>
-                  <td className="py-[25px] px-[10px]">{asignatura}</td>
-                  <td className="py-[25px] px-[10px]">{calificacion}</td>
-                  <td className="py-[25px] px-[10px]">{promedio}</td>
-                  <td className="py-[25px] px-[10px]">{docente}</td>
-                </tr>
-              )
+              /*  student.courses.map(({ asignatura, calificacion, docente, promedio }, index) =>
+                 <tr className="even:bg-white-1 odd:bg-white-2 text-sm" key={index}>
+                   <td className="py-[25px] px-[10px]">{asignatura}</td>
+                   <td className="py-[25px] px-[10px]">{calificacion}</td>
+                   <td className="py-[25px] px-[10px]">{promedio}</td>
+                   <td className="py-[25px] px-[10px]">{docente}</td>
+                 </tr>
+               ) */
             }
           </tbody>
         </table>
@@ -160,19 +163,11 @@ function Estudiante() {
         <section className="py-8">
 
           {/* Dropdown periodo escolar */}
-          <form className="mx-auto w-max my-[50px] mb-14 bg-brand-primary text-white-2 text-lg font-bold rounded-lg">
-            <select className="bg-transparent py-6 px-8 w-full outline-none" name="periodoComentarios" id="periodoComentarios">
-              <option className="w-full" value="2024-3">
-                2024-3
-              </option>
-              <option className="w-full" value="2024-2">
-                2024-2
-              </option>
-              <option className="w-full" value="2024-1">
-                2024-1
-              </option>
-            </select>
-          </form>
+          <div className="w-full flex justify-center">
+            <DropdownComentarios>
+              Periodo
+            </DropdownComentarios>
+          </div>
 
           {/* Lista de comentarios */}
           <div className="grid grid-cols-2 gap-8 px-[104px]">
