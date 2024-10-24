@@ -1,67 +1,71 @@
+import { useEffect, useState } from "react";
+import axios from 'axios'
 import CommentCard from "../components/CommentCard";
+import { getToken } from "../token";
+import useDropdown from "../hooks/useDropdown";
 
 function Estudiante() {
-  const calificaciones = [
-    {
-      asignatura: "Matemáticas",
-      calificacion: 85,
-      promedio: 88,
-      docente: "Prof. García",
-    },
-    {
-      asignatura: "Historia",
-      calificacion: 90,
-      promedio: 92,
-      docente: "Prof. López",
-    },
-    {
-      asignatura: "Ciencias",
-      calificacion: 78,
-      promedio: 80,
-      docente: "Prof. Martínez",
-    },
-    {
-      asignatura: "Literatura",
-      calificacion: 92,
-      promedio: 89,
-      docente: "Prof. Fernández",
-    },
-  ];
+  const DB_DOMAIN = import.meta.env.VITE_DB_DOMAIN;
+  const token = getToken();
 
   const comments = [
     {
       name: "Juan Pérez",
       asignatura: "Matemáticas",
-      comment: "Excelente en explicar conceptos complejos de manera sencilla.",
+      comment: "Has mejorado mucho en la comprensión de la gramática y redacción en español. Sigue esforzándote en ampliar tu vocabulario para expresarte con más precisión.",
       date: "16/10/2024",
+      img: "https://s3-alpha-sig.figma.com/img/0137/6a01/f8898b4d066033af55f17b0f52d39b46?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=pT7Ii9ckiq7iMG4-oihX8erT8he0ShxC8bUVoENQl3~Izq2PgHCkCPtlBx7sHLPy2G6W-zz0xZHa6eXQuQlbdYsr93r9P0dcrAP2EdYQYsLzwV1FwwKaZuleWXlwGJ-2v~8RZfLpCAxka8~LsveNj9t3ERVQv0uufcPFehuE96~FEFkdeKWAooiTdSyB6hB1EYmVjM7L8I9GzDNNBUrbAbcuOf~03G~NkxlAaoru8XdfzKkIuVb81oJtrA5635j~aG8phFK7-UxDkHx4PQuE1CD1k7M~6eZYihN6Kplu3rgFOzw-TEboz4TWQrxOTeQHmYmq3sV6GnnxUoKGSLfewQ__"
     },
     {
       name: "María López",
       asignatura: "Historia",
       comment:
-        "Sus clases son muy dinámicas y llenas de ejemplos interesantes.",
+        "Has mejorado mucho en la comprensión de la gramática y redacción en español. Sigue esforzándote en ampliar tu vocabulario para expresarte con más precisión.",
       date: "16/10/2024",
+      img: 'https://s3-alpha-sig.figma.com/img/25d1/a770/20008b9e3f08babd1f67f01cdb8f89d6?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TmDWdjvi5DAlFMcJlHwN69y~dAwos~k3PcZdg-Th3qoj2aasEfMTKgoBNE96o0PtNeTjEyD908bg0FUq2QuG32~WaHFfB8mymfgl4CHuuKztts7KJ8RljIdzWX0qMnRiN6HPXs1pXiOjPZv5ZvXEPfbxrGNjYhe0xjz8VkD1wU3AhtFwevnV-EDow6SFRrl681kvazFitFdeF3ZSkxE5GviHHeuGiBiEnlUZJtImv-t8-X9il9Au0awYAjV5In~oQF7ZI6t5UM7e4MT5FZfEfiDd~yEvXlx-JTU3qYrqFNeM189gBc7SLNuwxACFH9~fCKasZIGrgJ6fmq7iah2uzw__'
     },
     {
       name: "Carlos García",
       asignatura: "Ciencias",
-      comment: "Muy paciente y siempre dispuesto a ayudar a los estudiantes.",
+      comment: "Has mejorado mucho en la comprensión de la gramática y redacción en español. Sigue esforzándote en ampliar tu vocabulario para expresarte con más precisión.",
       date: "16/10/2024",
+      img: 'https://s3-alpha-sig.figma.com/img/2cc3/ba92/c0a402567bf37e095262f204b3eb3c99?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=glLoEH76iElOPQwm5Yd608lK~2LEAmdwaPb2kUz5EEAVlWDqvxTZRBssOcYcL32MedneUlDhxxMBE9dVMT5akoLO1IDLHbdn1UfvOvrK~uOGklPyVfglB-X9sGqtmLW~jm6ef~TvIGUjXvrns~D9i560oWSN9RFA~yNEj0P-Diqkfon47pH9z9xpZObgVglwf3P78wwQxIzIeMWI0ONo4WxYP5LIHOgtC75BQY90gcTNhaF6zkPPG-yzuyyd16A7~Z0pEeBLMeBSg3zyL3OJ7iQA5Ew9okqK6q9giLXTJ5oBVtWXU0E53dUuWVBT7WPE9uQswiemPVYQtkSNf5E5xg__'
     },
     {
       name: "Ana Martínez",
       asignatura: "Lengua y Literatura",
       comment:
-        "Fomenta la creatividad y el pensamiento crítico en sus alumnos.",
+        "Has mejorado mucho en la comprensión de la gramática y redacción en español. Sigue esforzándote en ampliar tu vocabulario para expresarte con más precisión.",
       date: "16/10/2024",
-    },
-    {
-      name: "Luis Fernández",
-      asignatura: "Educación Física",
-      comment: "Motiva a los estudiantes a mantenerse activos y saludables.",
-      date: "16/10/2024",
+      img: 'https://s3-alpha-sig.figma.com/img/85ff/b33a/47350a8e1c89e2ce276e4cb0255e10f3?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=P3xIC6zUkYfw8xiYVD4SinYD7EtWuUcXcz27~xwxtiYZMTCtVjX7NxHjU6XXf5l7MmUkeq3kCUZ4XPlu3KW-DxLz0x1eVZ47OVMULR1H-pN4Spfl9hj3RsJ3dLcC-YSJ3l~2NzpbKhoj~t1CxC34r17gxuU8ySJfreVxh3Xprto6x1LM6Nfn98TUAHLucXri-bZw9SsKrtQGEF4fKqQ1ypXI7wn7-qV1PeoHs-wXg5oHZQK2je3HTwGJlSyJEtgk7hVl9sqbStTQ9kUQ0ysi3ZSjwCYIS3faIUycegIgyvRgjZeVgB6qyZROuNTkL9DXCRBoZ5l7ZesiSiRE5MlJiA__'
     },
   ];
+
+  const listPeriod = ['2024-3', '2024-2', '2024-1']
+
+  const { DropdownComponent: DropdownComentarios } = useDropdown('Comentarios', 'Comentarios', listPeriod);
+  const { DropdownComponent: DropdownHistorial } = useDropdown('Dropdown_Historial', 'Dropdown_Historial', listPeriod);
+
+  const [student, setStudent] = useState();
+
+  const fetchUser = async () => {
+    try {
+      console.log('Token: ', token)
+      const response = await axios.get(`${DB_DOMAIN}/student/dashboard`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log(response.data);
+      setStudent(response.data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, [])
 
   return (
     <div className="max-w-[1281px] mx-auto">
@@ -110,12 +114,9 @@ function Estudiante() {
         {/* Encabezado historial académico */}
         <div className="flex items-center justify-between mb-[10px]">
           <h2 className="text-h3 font-extrabold">Historial Académico</h2>
-          <div className="space-x-[23px]">
-            <span className="text-[#595353] font-extrabold">Periodo Seleccionado</span>
-            <select name="periodo" id="periodo">
-              <option value="2024-3">2024-3</option>
-            </select>
-          </div>
+          <DropdownHistorial>
+            Periodo
+          </DropdownHistorial>
         </div>
 
         {/* Tabla de notas */}
@@ -130,20 +131,20 @@ function Estudiante() {
           </thead>
           <tbody>
             {
-              calificaciones.map(({ asignatura, calificacion, docente, promedio }, index) =>
-                <tr className="even:bg-white-1 odd:bg-white-2 text-sm" key={index}>
-                  <td className="py-[25px] px-[10px]">{asignatura}</td>
-                  <td className="py-[25px] px-[10px]">{calificacion}</td>
-                  <td className="py-[25px] px-[10px]">{promedio}</td>
-                  <td className="py-[25px] px-[10px]">{docente}</td>
-                </tr>
-              )
+              /*  student.courses.map(({ asignatura, calificacion, docente, promedio }, index) =>
+                 <tr className="even:bg-white-1 odd:bg-white-2 text-sm" key={index}>
+                   <td className="py-[25px] px-[10px]">{asignatura}</td>
+                   <td className="py-[25px] px-[10px]">{calificacion}</td>
+                   <td className="py-[25px] px-[10px]">{promedio}</td>
+                   <td className="py-[25px] px-[10px]">{docente}</td>
+                 </tr>
+               ) */
             }
           </tbody>
         </table>
 
         {/* Promedio del periodo */}
-        <section className="mx-auto w-max rounded-lg border-brand-primary border py-6 px-8 mb-20">
+        <section className="mx-auto w-max rounded-lg border-brand-primary border py-2 px-8">
           <span className="text-brand-primary font-bold text-lg">Promedio del Periodo</span> 9.3
         </section>
 
@@ -162,22 +163,14 @@ function Estudiante() {
         <section className="py-8">
 
           {/* Dropdown periodo escolar */}
-          <form className="mx-auto w-max my-[50px] mb-14 bg-brand-primary text-white-2 text-lg font-bold rounded-lg">
-            <select className="bg-transparent py-6 px-8 w-full outline-none" name="periodoComentarios" id="periodoComentarios">
-              <option className="w-full" value="2024-3">
-                2024-3
-              </option>
-              <option className="w-full" value="2024-2">
-                2024-2
-              </option>
-              <option className="w-full" value="2024-1">
-                2024-1
-              </option>
-            </select>
-          </form>
+          <div className="w-full flex justify-center mb-14">
+            <DropdownComentarios>
+              Periodo
+            </DropdownComentarios>
+          </div>
 
           {/* Lista de comentarios */}
-          <div className="grid grid-cols-2 gap-[49px]">
+          <div className="grid grid-cols-2 gap-8 px-[104px]">
             {
               comments.map((comment, index) => <CommentCard key={index} {...comment} />)
             }

@@ -1,41 +1,19 @@
-// function Footer() {
-//   return (
-//     <div className="py-[55px] flex justify-center items-center gap-7 mt-[100px]">
-//       <div className="h-[64px] w-[175px] rounded-[13px] flex items-center justify-center bg-[#6b6969]">Logo</div>
-//       <div className="w-[246px]">
-//         <p className="font-extrabold">¿Necesitas ayuda? Contáctenos</p>
-//         <a href="#">xxxxxxx@gmail.com</a>
-//       </div>
-//       <div className="w-[134px]">
-//         <p className="font-extrabold">Políticas de uso</p>
-//         <a className="block" href="#">Términos y condiciones</a>
-//         <a className="block" href="#">Política de cookies</a>
-//       </div>
-//       <div>
-//         <img src="/facebook.svg" alt="Facebook Icon" />
-//         <img src="/instagram.svg" alt="Instagram Icon" />
-//       </div>
-//     </div>
-//   )
-// }
-// export default Footer
-
 function Footer() {
   return (
-    <div className="bg-[#CDCDCD] flex justify-center items-center gap-7 h-[216px] py-[55px]">
+    <div className="bg-white-1 flex justify-center items-center gap-8 h-[216px] py-[55px]">
       {/* Logo */}
-      <div className="h-[64px] w-[175px] rounded-[13px] flex items-center justify-center bg-[#6b6969]">
-        Logo
-      </div>
+      <a href="/" className="h-auto w-[210px] rounded-[13px] flex items-center justify-center">
+        <img src="/Logo.svg" alt="Logo Edutrack" />
+      </a>
 
       {/* Contacto */}
-      <div className="w-[246px]">
-        <p className="font-extrabold">¿Necesitas ayuda? Contáctenos</p>
-        <a href="#">xxxxxxx@gmail.com</a>
+      <div className="w-max">
+        <p className="text-black-1 font-bold">¿Necesitas ayuda? Contáctenos</p>
+        <a href="#">edutrack@gmail.com</a>
       </div>
 
       {/* Políticas de uso */}
-      <div className="w-[134px]">
+      <div className="w-max space-y-2">
         <p className="font-extrabold">Políticas de uso</p>
         <a className="block" href="#">
           Términos y condiciones
@@ -46,7 +24,7 @@ function Footer() {
       </div>
 
       {/* Redes sociales */}
-      <div className="flex gap-4">
+      <div className="space-y-4">
         <img src="/facebook.svg" alt="Facebook Icon" />
         <img src="/instagram.svg" alt="Instagram Icon" />
       </div>

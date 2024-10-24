@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Home() {
     return (
         <div id="home" className="max-w-[1216px] mx-auto">
@@ -5,7 +7,7 @@ function Home() {
             <div className="space-y-9 py-20 max-w-[656px] mx-auto">
                 <h1 className="text-center">Bienvenido a EduTrack</h1>
                 <p className="text-center px-10 mb-8"> Un espacio diseñado para facilitar el seguimiento y la evaluación del rendimiento académico y conectar entre sí a los docentes, estudiantes y sus tutores.</p>
-                <button className="mx-auto block bg-brand-primary text-xl text-white-2 font-bold px-10 py-4 rounded-lg">Iniciar Sesión</button>
+                <Link className="w-max mx-auto block bg-brand-primary text-xl text-white-2 font-bold px-10 py-4 rounded-lg" to="/login">Iniciar Sesión</Link>
             </div>
 
             {/* Cards */}
