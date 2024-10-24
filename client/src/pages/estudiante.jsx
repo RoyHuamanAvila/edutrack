@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import CommentCard from "../components/CommentCard";
 import { getToken } from "../token";
+import useDropdown from "../hooks/useDropdown";
 
 function Estudiante() {
   const DB_DOMAIN = import.meta.env.VITE_DB_DOMAIN;
@@ -41,6 +42,11 @@ function Estudiante() {
       date: "16/10/2024",
     },
   ];
+
+  const listPeriod = ['2024-3', '2024-2', '2024-1']
+
+  const { DropdownComponent: DropdownComentarios } = useDropdown('Comentarios', 'Comentarios', listPeriod);
+  const { DropdownComponent: DropdownHistorial } = useDropdown('Dropdown_Historial', 'Dropdown_Historial', listPeriod);
 
   const [student, setStudent] = useState();
 
@@ -110,12 +116,9 @@ function Estudiante() {
         {/* Encabezado historial académico */}
         <div className="flex items-center justify-between mb-[10px]">
           <h2 className="text-h3 font-extrabold">Historial Académico</h2>
-          <div className="space-x-[23px]">
-            <span className="text-[#595353] font-extrabold">Periodo Seleccionado</span>
-            <select name="periodo" id="periodo">
-              <option value="2024-3">2024-3</option>
-            </select>
-          </div>
+          <DropdownHistorial>
+            Periodo
+          </DropdownHistorial>
         </div>
 
         {/* Tabla de notas */}
@@ -162,19 +165,11 @@ function Estudiante() {
         <section className="py-8">
 
           {/* Dropdown periodo escolar */}
-          <form className="mx-auto w-max my-[50px] mb-14 bg-brand-primary text-white-2 text-lg font-bold rounded-lg">
-            <select className="bg-transparent py-6 px-8 w-full outline-none" name="periodoComentarios" id="periodoComentarios">
-              <option className="w-full" value="2024-3">
-                2024-3
-              </option>
-              <option className="w-full" value="2024-2">
-                2024-2
-              </option>
-              <option className="w-full" value="2024-1">
-                2024-1
-              </option>
-            </select>
-          </form>
+          <div className="w-full flex justify-center">
+            <DropdownComentarios>
+              Periodo
+            </DropdownComentarios>
+          </div>
 
           {/* Lista de comentarios */}
           <div className="grid grid-cols-2 gap-[49px]">
