@@ -72,7 +72,6 @@ function Estudiante() {
       console.log(error);
     }
   };
-
   // Simulando la obtención de datos de un JSON
   const userData = {
     name: "Alberto Gutiérrez",
