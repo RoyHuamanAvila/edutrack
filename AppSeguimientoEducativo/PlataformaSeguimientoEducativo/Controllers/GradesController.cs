@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PlataformaSeguimientoEducativo.DTOs;
 using PlataformaSeguimientoEducativo.Services;
 
@@ -14,7 +15,7 @@ namespace PlataformaSeguimientoEducativo.Controllers
 		{
 			_gradeService = gradeService;
 		}
-
+		
 		// Obtener todas las notas de un estudiante
 		[HttpGet("student/{studentId}")]
 		public async Task<IActionResult> GetGradesByStudentId(int studentId)
@@ -26,6 +27,19 @@ namespace PlataformaSeguimientoEducativo.Controllers
 			}
 
 			return Ok(grades);
+		}
+
+		// Post - Agregar notas al estudiante
+		[Authorize(Roles = "Teacher")]
+		[HttpPost("{studentId}")]
+		public async Task<IActionResult> AddGrade(int studentId, [FromBody] GradeDto gradeDto)
+		{
+			if (gradeDto == null)
+				return BadRequest("Los datos de la calificación son necesarios.");
+
+			var result = await _gradeService.AddGradeByStudentIdAsync(studentId, gradeDto);
+
+			return CreatedAtAction(nameof(AddGrade), new { studentId, gradeId = result.CourseId }, result);
 		}
 	}
 }

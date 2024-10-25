@@ -15,11 +15,29 @@ namespace PlataformaSeguimientoEducativo.Repositories
 			_context = context;
 		}
 
-		public async Task<List<Grade>> GetGradesByStudentIdAsync(int studentId)
+		// Obtener notas de un estudiante, con posibilidad de filtrado por curso y periodo
+		public async Task<List<Grade>> GetGradesByStudentId(int studentId, int? courseId, int? AcademicPeriodId)
 		{
-			return await _context.Set<Grade>()
-				.Where(g => g.StudentId == studentId)
-				.ToListAsync(); // Retornar la lista de notas del estudiante
+			var query = _context.Grades.AsQueryable();
+
+			// Filtrar por estudiante
+			query = query.Where(g => g.StudentId == studentId);
+
+			// Filtrar opcionalmente por CourseId y PeriodId
+			if (courseId.HasValue)
+				query = query.Where(g => g.CourseId == courseId.Value);
+
+			if (AcademicPeriodId.HasValue)
+				query = query.Where(g => g.Course.AcademicPeriod.AcademicPeriodId == AcademicPeriodId.Value);
+
+			return await query.ToListAsync();
+		}
+
+		// Método para agregar una nota individual
+		public async Task<Grade> AddGradesAsync(Grade grade)
+		{
+			await _context.Grades.AddAsync(grade);
+			return grade;
 		}
 	}
 }
