@@ -96,77 +96,56 @@ function Estudiante() {
 
   return (
     <div className="max-w-[1281px] mx-auto">
-      <div className="py-10 sm:py-10 lg:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="py-10 sm:py-10">
+        <div className="flex flex-col lg:flex-row gap-8 justify-between">
           {/* Contenedor Izquierdo (Card 1) */}
-          <div className="w-[592px] h-[174px] bg-white rounded-lg shadow-lg p-0 flex items-center border border-brand-primary ">
+          <div className="w-[592px] h-[174px] bg-white rounded-lg p-1 flex items-center border border-brand-primary">
             {/* Imagen a la izquierda */}
             <img
-              src="\src\icons\patito.png" // Asegúrate de que esta ruta sea correcta
-              alt="img"
-              className="w-[200px] h-[170px]  rounded-lg" // Ajusta el tamaño según tus necesidades
+              src="/src/icons/patito.png" // Asegúrate de que esta ruta sea correcta
+              alt="Imagen"
+              className="w-[200px] h-[170px] "
             />
 
             {/* Contenedor para el texto a la derecha */}
-            <div className="flex-1 text-left">
-              <h2 className="text-[24px] font-bold text-black p-2">
-                Estudiante
-              </h2>
-              <label className="text-[32px] text-brand-primary p-4 font-bold">
+            <div className="p-4 flex-1 text-left">
+              <h2 className="text-[24px] font-bold text-black">Estudiante</h2>
+              <p className="text-[32px] text-brand-primary font-bold">
                 {userData.name}
-              </label>
-              <h2 className="text-[24px]">Id:</h2>
-
-              <label className="text-[32px] text-brand-primary p-4 font-bold">
-                {userData.id}
-              </label>
+              </p>
+              <div className="flex items-center">
+                <label className="text-[16px] font-bold">Id:</label>
+                <span className="text-[16px] text-brand-primary pl-2 font-bold">
+                  {userData.id}
+                </span>
+              </div>
             </div>
           </div>
 
           {/* Contenedor Derecho (Card 2) */}
-          <div className="w-[592px] h-[174px] border border-brand-primary rounded-lg p-6">
-            <div className="flex flex-col   h-full">
-              {/* Dividir el contenido en dos columnas */}
-              <div className="grid grid-cols-1  gap-4 w-full">
-                <div className=" left flex flex-col ">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Institución</th>
-                        <th>Periodo Actual</th>
-                        <th>Tutor</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-center">
-                      <tr>
-                        <td>{Tabla1.colegio}</td>
-                        <td>{Tabla1.periodo}</td>
-                        <td>{Tabla1.tutor}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <table className="mt-4">
-                    <thead>
-                      <tr>
-                        <th>Curso</th>
-                        <th>Asignatura</th>
-                        <th>Teléfono Tutor</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-center">
-                      <tr>
-                        <td>{Tabla2.curso}</td>
-                        <td>{Tabla2.asignatura}</td>
-                        <td>{Tabla2.telefono}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+          <div className="w-full lg:w-[592px] grid grid-cols-3 gap-4 min-h-[174px] border border-brand-primary p-4 rounded-lg">
+            {/* Encabezados */}
+            <div className="font-bold">Institución</div>
+            <div className="font-bold">Periodo Actual</div>
+            <div className="font-bold">Tutor</div>
+
+            {/* Datos */}
+            <div>{Tabla1.colegio}</div>
+            <div>{Tabla1.periodo}</div>
+            <div>{Tabla1.tutor}</div>
+
+            {/* Segunda fila de datos */}
+            <div className="font-bold">Curso</div>
+            <div className="font-bold">Asignatura</div>
+            <div className="font-bold">Teléfono Tutor</div>
+
+            <div>{Tabla2.curso}</div>
+            <div>{Tabla2.asignatura}</div>
+            <div>{Tabla2.telefono}</div>
           </div>
         </div>
       </div>
+
       <section className="mx-auto">
         {/* Encabezado historial académico */}
         <div className="flex items-center justify-between mb-[10px]">
