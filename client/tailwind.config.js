@@ -6,7 +6,7 @@ export default {
       colors: {
         brand: {
           primary: "#722B76",
-          secondary: "#FACC5A",
+          secondary: "#EBE2FA",
         },
         state: {
           info: "#A3C1DA",

@@ -176,12 +176,11 @@ function Estudiante() {
 
         {/* Tabla de notas */}
         <table className="w-full text-center mb-[76px]">
-          <thead className="text-white-2 font-bold">
+          <thead className="text-black-2 font-bold">
             <tr className="rounded-lg overflow-hidden">
-              <th className="bg-brand-primary py-6 rounded-s-lg">Asignatura</th>
-              <th className="bg-brand-primary py-6">Calificación</th>
-              <th className="bg-brand-primary py-6">Promedio por asignatura</th>
-              <th className="bg-brand-primary py-6 rounded-e-lg">Docente</th>
+              <th className="bg-brand-secondary pl-[200px] py-6 rounded-s-lg">Asignatura</th>
+              <th className="bg-brand-secondary py-6">Calificación</th>
+              <th className="bg-brand-secondary pr-[200px] py-6 rounded-e-lg">Docente</th>
             </tr>
           </thead>
           <tbody>
@@ -199,9 +198,8 @@ function Estudiante() {
         {/* Promedio del periodo */}
         <section className="mx-auto w-max rounded-lg border-brand-primary border py-2 px-8">
           <span className="text-brand-primary font-bold text-lg">
-            Promedio del Periodo
-          </span>{" "}
-          9.3
+            Promedio del Periodo 9.3
+          </span>
         </section>
 
         {/* Encabezado de los comentarios */}
