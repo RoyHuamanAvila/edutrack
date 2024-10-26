@@ -1,4 +1,4 @@
-//import CommentCard from "../../components/CommentCard";
+import CommentCard from "../../components/CommentCard";
 import useDropdown from "../../hooks/useDropdown";
 import { arrayOf, number, shape, string } from 'prop-types';
 
@@ -140,6 +140,13 @@ const EstudianteView = ({ studentId, fullName, phoneNumber, courses, profileImag
 
           {/* Lista de comentarios */}
           <div className="grid grid-cols-2 gap-8 px-[104px]">
+            {
+              courses.map((course, index) => {
+                const { feedbackText, feedbackDate, teacherName } = course.feedbacks[0];
+
+                return <CommentCard key={index} asignatura={course.subject} name={teacherName} comment={feedbackText} date={feedbackDate} />
+              })
+            }
             {/* {comments.map((comment, index) => (
               <CommentCard key={index} {...comment} />
             ))} */}
