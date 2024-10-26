@@ -141,7 +141,7 @@ const EstudianteView = ({ studentId, fullName, phoneNumber, courses, profileImag
           {/* Lista de comentarios */}
           <div className="grid grid-cols-2 gap-8 px-[104px]">
             {
-              courses.map((course, index) => {
+              courses?.map((course, index) => {
                 const { feedbackText, feedbackDate, teacherName } = course.feedbacks[0];
 
                 return <CommentCard key={index} asignatura={course.subject} name={teacherName} comment={feedbackText} date={feedbackDate} />
