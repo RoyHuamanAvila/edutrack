@@ -11,16 +11,16 @@ export default {
         state: {
           info: "#A3C1DA",
           success: "#5CB85C",
-          warning: "FFC107",
-          error: "D9534F",
+          warning: "#FFC107",
+          error: "#D9534F",
         },
         black: {
-          1: "333333",
-          2: "000000",
+          1: "#333333",
+          2: "#000000",
         },
         grey: {
-          1: "4A4A4A",
-          2: "9E9E9E",
+          1: "#4A4A4A",
+          2: "#9E9E9E",
         },
         white: {
           1: "#FAFAFA",
