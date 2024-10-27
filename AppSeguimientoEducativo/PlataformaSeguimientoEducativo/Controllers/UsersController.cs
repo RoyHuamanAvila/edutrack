@@ -64,7 +64,7 @@ namespace PlataformaSeguimientoEducativo.Controllers
 
             if (string.IsNullOrEmpty(userEmail))
             {
-                return BadRequest("Unable to identify user.");
+                return BadRequest("Incapaz de identificar a la usuario.");
             }
 
             try
@@ -81,12 +81,11 @@ namespace PlataformaSeguimientoEducativo.Controllers
             }
             catch (KeyNotFoundException)
             {
-                return NotFound("User not found.");
+                return NotFound("Usuario no encontrado.");
             }
             catch (Exception ex)
             {
-                // Log the exception
-                return StatusCode(500, "An error occurred while updating the profile.");
+                return StatusCode(500, "Se produjo un error al actualizar el perfil.");
             }
         }
 
@@ -126,7 +125,7 @@ namespace PlataformaSeguimientoEducativo.Controllers
             }
             catch (KeyNotFoundException)
             {
-                return NotFound("User not found");
+                return NotFound("Usuario no encontrado.");
             }
             catch (InvalidOperationException ex)
             {

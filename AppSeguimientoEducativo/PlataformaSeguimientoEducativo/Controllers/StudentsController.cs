@@ -22,24 +22,35 @@ namespace PlataformaSeguimientoEducativo.Controllers
 
         [Authorize(Roles = "Student")]
         [HttpGet("dashboard")]
+        [ProducesResponseType(typeof(StudentDashboardDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<StudentDashboardDto>> GetDashboard()
         {
-           
-            var email = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-            
-            var user = await _userService.GetUserByEmailAsync(email);
-            if (user == null)
+            try
             {
-                return NotFound("Usuario no encontrado.");
+                var email = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(email))
+                {
+                    return Unauthorized("No se pudo identificar al usuario.");
+                }
+
+                var user = await _userService.GetUserByEmailAsync(email);
+                if (user == null)
+                {
+                    return NotFound("Usuario no encontrado.");
+                }
+
+                var dashboard = await _studentService.GetStudentDashboardAsync(user.UserId);
+                return Ok(dashboard);
             }
-
-            
-            var userId = user.UserId;
-
-            
-            var dashboard = await _studentService.GetStudentDashboardAsync(userId);
-            return Ok(dashboard);
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Ocurrió un error al obtener el dashboard del estudiante.");
+            }
         }
 
         [HttpPost("register")]

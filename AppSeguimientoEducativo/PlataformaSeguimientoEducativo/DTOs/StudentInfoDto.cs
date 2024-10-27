@@ -2,7 +2,7 @@
 
 namespace PlataformaSeguimientoEducativo.DTOs
 {
-    public class StudentDashboardDto
+    public class StudentInfoDto
     {
         [JsonPropertyName("studentId")]
         public int StudentId { get; set; }

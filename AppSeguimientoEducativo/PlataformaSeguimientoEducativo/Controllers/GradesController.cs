@@ -16,7 +16,6 @@ namespace PlataformaSeguimientoEducativo.Controllers
 			_gradeService = gradeService;
 		}
 		
-		// Obtener todas las notas de un estudiante
 		[HttpGet("student/{studentId}")]
 		public async Task<IActionResult> GetGradesByStudentId(int studentId)
 		{
@@ -29,7 +28,6 @@ namespace PlataformaSeguimientoEducativo.Controllers
 			return Ok(grades);
 		}
 
-		// Post - Agregar notas al estudiante
 		[Authorize(Roles = "Teacher")]
 		[HttpPost("{studentId}")]
 		public async Task<IActionResult> AddGrade(int studentId, [FromBody] GradeDto gradeDto)

@@ -34,48 +34,51 @@ namespace PlataformaSeguimientoEducativo.Services
                 throw new KeyNotFoundException($"No se encontró un perfil de estudiante para el userId: {userId}.");
             }
 
-            // Obtener los cursos y construir el StudentDashboardDto.
             var courses = await _unitOfWork.Courses.GetCoursesForStudentAsync(student.StudentId);
+
+            var coursesInfo = courses.Select(course => new CourseDto
+            {
+                CourseId = course.CourseId,
+                CourseName = course.CourseName,
+                Teachers = new List<TeacherInfoDto>
+            {
+                new TeacherInfoDto
+                {
+                    TeacherName = course.Teacher.User.FullName,
+                    ProfileImageUrl = course.Teacher.User.ProfileImageUrl,
+                    SubjectName = course.Teacher.Subject,
+                    Period = course.AcademicPeriod.PeriodName,
+                    GradeValue = course.Grades
+                        .Where(g => g.StudentId == student.StudentId)
+                        .OrderByDescending(g => g.EvaluationDate)
+                        .Select(g => g.GradeValue)
+                        .FirstOrDefault(),
+                    Feedback = course.Feedbacks
+                        .Where(f => f.StudentId == student.StudentId)
+                        .OrderByDescending(f => f.FeedbackDate)
+                        .Select(f => new FeedbackDetailDto
+                        {
+                            FeedbackText = f.FeedbackText,
+                            FeedbackDate = f.FeedbackDate.ToString("yyyy-MM-dd")
+                        })
+                        .FirstOrDefault() ?? new FeedbackDetailDto()
+                }
+            }
+            }).ToList();
+
             var dashboard = new StudentDashboardDto
             {
                 StudentId = student.StudentId,
-                FullName = user.FullName,
-                Role = student.User.Role.RoleName,
-                Grade = student.Grade,
-                EnrollmentDate = student.EnrollmentDate,
-                ProfileImageUrl = student.User.ProfileImageUrl,
-                PhoneNumber = student.User.PhoneNumber,
-                Courses = courses.Select(c => new CourseInfoDto
-                {
-                    CourseId = c.CourseId,
-                    CourseName = c.CourseName,
-                    TeacherName = c.Teacher.User.FullName,
-                    Subject = c.Teacher.Subject,
-                    AcademicPeriodName = c.AcademicPeriod.PeriodName,
-                    Grades = c.Grades
-                        .Where(g => g.StudentId == student.StudentId)
-                        .Select(g => new GradeDto
-                        {
-                            GradeValue = g.GradeValue,
-                            EvaluationDate = g.EvaluationDate,
-                        }).ToList(),
-                    Feedbacks = c.Feedbacks
-                        .Where(f => f.StudentId == student.StudentId)
-                        .Select(f => new FeedbackDto
-                        {
-                            FeedbackText = f.FeedbackText,
-                            TeacherName = f.Teacher.User.FullName,
-                            FeedbackDate = f.FeedbackDate
-                        }).ToList()
-                }).ToList()
+                StudentName = student.User.FullName,
+                Tutor = new Dictionary<string, string>(),
+                Courses = coursesInfo
             };
 
             return dashboard;
-        }
+    }
 
         public async Task<Student> Register(RegisterUserDto registerUserDto)
         {
-            //reusando registerUserDto
             registerUserDto.RoleName = "Student";
             var user =  await _userService.RegisterUserAsync(registerUserDto);
             var student = new Student

@@ -119,41 +119,43 @@ namespace PlataformaSeguimientoEducativo.Services
             }
 
             var courses = await _unitOfWork.Courses.GetCoursesForStudentAsync(student.StudentId);
-
-            var dashboard = new StudentDashboardDto
+            var coursesInfo = courses.Select(course => new CourseDto
             {
-                StudentId = student.StudentId,
-                FullName = user.FullName,
-                Role = "Student",
-                Courses = courses.Select(c => new CourseInfoDto
+                CourseId = course.CourseId,
+                CourseName = course.CourseName,
+                Teachers = new List<TeacherInfoDto>
+            {
+                new TeacherInfoDto
                 {
-                    CourseId = c.CourseId,
-                    CourseName = c.CourseName,
-                    TeacherName = c.Teacher.User.FullName,
-                    AcademicPeriodName = c.AcademicPeriod.PeriodName,
-                    Grades = c.Grades
+                    TeacherName = course.Teacher.User.FullName,
+                    ProfileImageUrl = course.Teacher.User.ProfileImageUrl,
+                    SubjectName = course.Teacher.Subject,
+                    Period = course.AcademicPeriod.PeriodName,
+                    GradeValue = course.Grades
                         .Where(g => g.StudentId == student.StudentId)
-                        .Select(g => new GradeDto
-                        {
-                            GradeValue = g.GradeValue,
-                            EvaluationDate = g.EvaluationDate 
-                        })
-                        .ToList(),
-                    Feedbacks = c.Feedbacks
+                        .OrderByDescending(g => g.EvaluationDate)
+                        .Select(g => g.GradeValue)
+                        .FirstOrDefault(),
+                    Feedback = course.Feedbacks
                         .Where(f => f.StudentId == student.StudentId)
-                        .Select(f => new FeedbackDto
+                        .OrderByDescending(f => f.FeedbackDate)
+                        .Select(f => new FeedbackDetailDto
                         {
                             FeedbackText = f.FeedbackText,
-                            TeacherName = f.Teacher.User.FullName, 
-                            FeedbackDate = f.FeedbackDate 
+                            FeedbackDate = f.FeedbackDate.ToString("yyyy-MM-dd")
                         })
-                        .ToList()
-                }).ToList()
+                        .FirstOrDefault() ?? new FeedbackDetailDto()
+                }
+            }
+            }).ToList();
+
+            return new StudentDashboardDto
+            {
+                StudentId = student.StudentId,
+                StudentName = student.User.FullName,
+                Tutor = new Dictionary<string, string>(),
+                Courses = coursesInfo
             };
-
-
-
-            return dashboard;
         }
         public async Task<User> UpdateProfileAsync(string userEmail, UpdateProfileDto updateProfileDto)
         {

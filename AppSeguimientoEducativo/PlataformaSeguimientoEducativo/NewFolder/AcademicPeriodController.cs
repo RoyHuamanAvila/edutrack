@@ -1,6 +1,7 @@
 ﻿﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlataformaSeguimientoEducativo.Data;
+using PlataformaSeguimientoEducativo.DTOs;
 
 
 namespace PlataformaSeguimientoEducativo.NewFolder

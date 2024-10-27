@@ -17,7 +17,6 @@ namespace PlataformaSeguimientoEducativo.Controllers
             _parentService = parentService;
         }
 
-        // Solo los usuarios con el rol "Parent" pueden acceder a este recurso
         [Authorize(Roles = "Parent")]
         [HttpGet("{parentId}")]
         public async Task<ActionResult<ParentDashboardDto>> Get(int parentId, [FromQuery] int studentId)
