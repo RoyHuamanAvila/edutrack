@@ -1,18 +1,42 @@
-const DocenteView = ({ imgProfile, teacherName, teacherId, DropdownPeriod, DropdownSubject, DropdownCourse }) => {
+import React, { useState } from "react";
+import ModalJustificacion from "../../components/Modal";
+
+const DocenteView = ({
+  imgProfile,
+  teacherName,
+  teacherId,
+  DropdownPeriod,
+  DropdownSubject,
+  DropdownCourse,
+}) => {
+  // Controla si el modal está abierto o cerrado
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div id="docente" className="max-w-[1216px] m-auto">
       {/* Datos del Docente */}
       <div className="grid grid-cols-2 gap-8 my-[72px]">
         {/* Card izquierda */}
         <div className="card border border-brand-primary w-full flex">
-          { /* Foto de perfil del docente */}
-          <img className="max-h-[174px] max-w-[200px]" src={imgProfile} alt="Perfil Docente" />
+          {/* Foto de perfil del docente */}
+          <img
+            className="max-h-[174px] max-w-[200px]"
+            src={imgProfile}
+            alt="Perfil Docente"
+          />
 
           {/* Datos personales */}
           <div className="p-10">
             <p className="font-bold text-grey-1 text-h5 leading-4">Docente</p>
-            <p className="font-bold text-h4 text-brand-primary">{teacherName}</p>
-            <p className="font-bold text-grey-1">ID <span className="text-brand-primary">{teacherId}</span></p>
+            <p className="font-bold text-h4 text-brand-primary">
+              {teacherName}
+            </p>
+            <p className="font-bold text-grey-1">
+              ID <span className="text-brand-primary">{teacherId}</span>
+            </p>
           </div>
         </div>
 
@@ -37,14 +61,26 @@ const DocenteView = ({ imgProfile, teacherName, teacherId, DropdownPeriod, Dropd
       <div className="space-y-6 mb-6">
         <h2 className="text-h3">Califique y Retroalimente a sus Estudiantes</h2>
         <form className="bg-brand-secondary flex py-4 px-8 gap-4 rounded-lg">
-          <DropdownPeriod className="bg-white-2 !text-black-2">Periodo</DropdownPeriod>
-          <DropdownSubject className="bg-white-2 !text-black-2">Asignatura</DropdownSubject>
-          <DropdownCourse className="bg-white-2 !text-black-2">Curso</DropdownCourse>
-          <button type="submit" className="bg-brand-primary text-white-2 py-2 px-8 rounded-lg ml-auto font-bold">Buscar</button>
+          <DropdownPeriod className="bg-white-2 !text-black-2">
+            Periodo
+          </DropdownPeriod>
+          <DropdownSubject className="bg-white-2 !text-black-2">
+            Asignatura
+          </DropdownSubject>
+          <DropdownCourse className="bg-white-2 !text-black-2">
+            Curso
+          </DropdownCourse>
+          <button
+            type="submit"
+            className="bg-brand-primary text-white-2 py-2 px-8 rounded-lg ml-auto font-bold"
+          >
+            Buscar
+          </button>
         </form>
-        <h3 className="text-h5 text-grey-1">2024-3 / Educación Física / 7A Bachillerato</h3>
+        <h3 className="text-h5 text-grey-1">
+          2024-3 / Educación Física / 7A Bachillerato
+        </h3>
       </div>
-
 
       {/* Header Lista de Estudiantes */}
       <div className="flex justify-between mb-[10px]">
@@ -57,14 +93,26 @@ const DocenteView = ({ imgProfile, teacherName, teacherId, DropdownPeriod, Dropd
       <table className="w-full table-fixed">
         <thead>
           <tr>
-            <td className="text-black-1 font-bold bg-brand-secondary py-6 rounded-s-lg text-center">Estudiante</td>
-            <td className="text-black-1 font-bold bg-brand-secondary py-6 pl-20">ID</td>
-            <td className="text-black-1 font-bold bg-brand-secondary py-6">Calificacion</td>
-            <td className="text-black-1 font-bold bg-brand-secondary py-6 rounded-e-lg text-left">Comentario</td>
+            <td className="text-black-1 font-bold bg-brand-secondary py-6 rounded-s-lg text-center">
+              Estudiante
+            </td>
+            <td className="text-black-1 font-bold bg-brand-secondary py-6 pl-20">
+              ID
+            </td>
+            <td className="text-black-1 font-bold bg-brand-secondary py-6">
+              Calificacion
+            </td>
+            <td className="text-black-1 font-bold bg-brand-secondary py-6 rounded-e-lg text-left">
+              <button
+                onClick={openModal}
+                className="px-4 py-2 bg-blue-500 text-white rounded"
+              ></button>
+              <ModalJustificacion isOpen={isModalOpen} onClose={closeModal} />
+            </td>
           </tr>
         </thead>
       </table>
     </div>
-  )
-}
-export default DocenteView
+  );
+};
+export default DocenteView;
