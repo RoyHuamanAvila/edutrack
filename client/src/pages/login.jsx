@@ -12,13 +12,14 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("image1");
   const DB_DOMAIN = import.meta.env.VITE_DB_DOMAIN;
 
   // Función para manejar el inicio de sesión
   const handleLogin = async (e) => {
-    e.preventDefault(); // Evitar que el formulario se envíe de manera predeterminada
-    setLoading(true); // Activar estado de carga
-    setError(""); // Limpiar mensajes de error
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
     // Validación básica del email
     if (!/\S+@\S+\.\S+/.test(email)) {
@@ -28,62 +29,96 @@ const Login = () => {
     }
 
     try {
-      // Hacer la solicitud a la API con el email y la contraseña
       const response = await axios.post(`${DB_DOMAIN}/Users/login`, {
         email: email,
         password,
       });
 
-      console.log("Respuesta de la API:", response.data); // Manejar la respuesta de la API
-      const { token } = response.data; // Asegúrate de que esto sea correcto
+      console.log("Respuesta de la API:", response.data);
+      const { token } = response.data;
 
-      setToken(token); // Guardar el token utilizando la función setToken
-      navigate("/estudiante"); // Redirigir al usuario a la vista de estudiante
+      setToken(token);
+      navigate("/estudiante");
     } catch (error) {
       const errorMessage =
         error.response?.data?.Email ||
         "Error en la autenticación. Verifique sus credenciales.";
-      setError(errorMessage); // Manejar el error
+      setError(errorMessage);
       console.error(
         "Error en la autenticación:",
         error.response?.data.errors || error.response?.data
       );
     } finally {
-      setLoading(false); // Desactivar estado de carga
+      setLoading(false);
     }
+  };
+
+  // Manejar cambio de imagen y texto según el radio botón seleccionado
+  const handleRadioChange = (e) => {
+    setSelectedImage(e.target.value);
+  };
+
+  const imageDetails = {
+    image1: {
+      src: "../public/imagenes/Portada.png",
+      title: "Monitoreo de rendimientos",
+      subtitle: "Actualizados y siempre accesibles",
+    },
+    image2: {
+      src: "../public/imagenes/Portada2.png",
+      title: "Evaluación y Retroalimentación",
+      subtitle: "Orientado al progreso constante",
+    },
   };
 
   return (
     <div className="grid h-screen place-items-center">
       <div className="w-[1216px] h-full text-center grid grid-cols-2">
-        {/* Contenedor principal */}
         <div className="relative p-0 w-[592px]">
           <img
-            src="../public/imagenes/Portada.png"
+            src={imageDetails[selectedImage].src}
             alt="Portada del monitoreo de rendimientos"
             className="h-full w-full object-cover "
           />
-          <div className=" bg-[#ffffff] border border-brand-primary absolute bottom-20 left-1/2 transform -translate-x-1/2 w-[384px] h-[90px] flex items-center justify-center bg-white rounded-lg p-4 shadow-lg text-center">
+          <div className="bg-[#ffffff] border border-brand-primary absolute bottom-20 left-1/2 transform -translate-x-1/2 w-[384px] h-[90px] flex items-center justify-center bg-white rounded-lg p-4 shadow-lg text-center">
             <div>
               <h2 className="text-[24px] font-bold text-brand-primary">
-                Monitoreo de rendimientos
+                {imageDetails[selectedImage].title}
               </h2>
               <h3 className="text-[20px] text-[#4A4A4A]">
-                Actualizados y siempre accesibles
+                {imageDetails[selectedImage].subtitle}
               </h3>
             </div>
+          </div>
+          {/* Radio buttons */}
+          <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
+            <label className="mr-4">
+              <input
+                type="radio"
+                value="image1"
+                checked={selectedImage === "image1"}
+                onChange={handleRadioChange}
+              />
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="image2"
+                checked={selectedImage === "image2"}
+                onChange={handleRadioChange}
+              />
+            </label>
           </div>
         </div>
         <div className="p-4 w-[592px]">
           <div className="p-16 w-full flex flex-col items-start text-left mb-8">
-            {/* Contenedor de logo y título */}
-            <div className="w-full  rounded-lg ">
+            <div className="w-full rounded-lg">
               <img
                 src="\Logo.jpg"
                 alt="Logo del Portal Académico"
-                className="w-[192px] h-[48px] "
+                className="w-[192px] h-[48px]"
               />
-              <h3 className="text-[48px] text-black font-bold  ">
+              <h3 className="text-[48px] text-black font-bold">
                 Bienvenidos al Portal Académico
               </h3>
             </div>
@@ -103,9 +138,9 @@ const Login = () => {
                 <input
                   type="email"
                   id="email"
-                  value={email} // Valor del input vinculado al estado email
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="mt-1 block w-full  px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none"
                   placeholder="Ingresar Correo Electrónico"
                   required
                 />
@@ -122,7 +157,7 @@ const Login = () => {
                 </div>
                 <div className="flex items-center border border-gray-300 rounded-md shadow-sm mt-1">
                   <input
-                    type={showPassword ? "text" : "password"} // Cambia entre texto visible y contraseña oculta
+                    type={showPassword ? "text" : "password"}
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -132,19 +167,15 @@ const Login = () => {
                   />
                   <span
                     className="flex items-center justify-center pr-3 cursor-pointer"
-                    onClick={() => {
-                      setShowPassword(!showPassword); // Alternar visibilidad
-                      if (!showPassword) {
-                        console.log("Mostrar contraseña");
-                      } else {
-                        console.log("Ocultar contraseña");
-                      }
+                    onMouseDown={(event) => {
+                      event.preventDefault(); // Evitar el enfoque
+                      setShowPassword(!showPassword);
                     }}
                   >
                     {showPassword ? (
-                      <EyeIcon2 className="w-5 h-5 text-gray-500 bg-white bg-slate-500" /> // Ícono para ocultar la contraseña
+                      <EyeIcon2 className="w-5 h-5 text-gray-500 bg-white" />
                     ) : (
-                      <EyeIcon className="w-5 h-5 text-gray-500 bg-white" /> // Ícono para mostrar la contraseña
+                      <EyeIcon className="w-5 h-5 text-gray-500 bg-white" />
                     )}
                   </span>
                 </div>
@@ -154,8 +185,8 @@ const Login = () => {
               </p>
               <button
                 type="submit"
-                className="w-[204px] bg-brand-primary text-white-1 font-semibold py-2 px-4 rounded-md  transition duration-200"
-                disabled={loading} // Desactivar el botón mientras se carga
+                className="w-[204px] bg-brand-primary text-white-1 font-semibold py-2 px-4 rounded-md transition duration-200"
+                disabled={loading}
               >
                 {loading ? "Cargando..." : "Iniciar Sesión"}
               </button>
