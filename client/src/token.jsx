@@ -1,3 +1,5 @@
+import { jwtDecode } from 'jwt-decode'
+
 // Guarda el token en el localStorage
 export const setToken = (token) => {
   localStorage.setItem("authToken", token);
@@ -12,3 +14,8 @@ export const getToken = () => {
 export const removeToken = () => {
   localStorage.removeItem("authToken");
 };
+
+export const decryptToken = () => {
+  const token = localStorage.getItem("authToken");
+  return jwtDecode(token);
+}

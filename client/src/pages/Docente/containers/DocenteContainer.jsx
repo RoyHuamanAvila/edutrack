@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import DocenteView from "../components/DocenteView"
+import { decryptToken } from "../../../token";
+import { getDocenteById } from "../services";
 
 const DocenteContainer = () => {
   const [docente, setDocente] = useState({
@@ -7,6 +9,22 @@ const DocenteContainer = () => {
     teacherName: 'José Alba',
     teacherId: 1124743862,
   });
+
+  const handleGetDocenteData = async () => {
+    const userDataToken = decryptToken();
+    const docenteId = userDataToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+
+    try {
+      const docenteFetchData = await getDocenteById(docenteId);
+      setDocente(docenteFetchData);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    handleGetDocenteData();
+  }, [])
 
   return (
     <DocenteView docente={docente} />
