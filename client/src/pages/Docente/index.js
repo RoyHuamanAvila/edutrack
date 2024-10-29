@@ -1,1 +1,1 @@
-export { default as Docente } from "./DocenteContainer";
+export { default as Docente } from "./containers/DocenteContainer";
