@@ -1,4 +1,9 @@
-const DocenteView = ({ imgProfile, teacherName, teacherId, DropdownPeriod, DropdownSubject, DropdownCourse }) => {
+import StudentGradesContainer from "../containers/StudentGradesContainer"
+import GradeFilter from "./GradeFilter"
+
+const DocenteView = ({ docente }) => {
+  const { imgProfile, teacherName, teacherId } = docente
+
   return (
     <div id="docente" className="max-w-[1216px] m-auto">
       {/* Datos del Docente */}
@@ -36,34 +41,13 @@ const DocenteView = ({ imgProfile, teacherName, teacherId, DropdownPeriod, Dropd
       {/* Search Bar */}
       <div className="space-y-6 mb-6">
         <h2 className="text-h3">Califique y Retroalimente a sus Estudiantes</h2>
-        <form className="bg-brand-secondary flex py-4 px-8 gap-4 rounded-lg">
-          <DropdownPeriod className="bg-white-2 !text-black-2">Periodo</DropdownPeriod>
-          <DropdownSubject className="bg-white-2 !text-black-2">Asignatura</DropdownSubject>
-          <DropdownCourse className="bg-white-2 !text-black-2">Curso</DropdownCourse>
-          <button type="submit" className="bg-brand-primary text-white-2 py-2 px-8 rounded-lg ml-auto font-bold">Buscar</button>
-        </form>
+        <GradeFilter />
         <h3 className="text-h5 text-grey-1">2024-3 / Educación Física / 7A Bachillerato</h3>
       </div>
 
 
-      {/* Header Lista de Estudiantes */}
-      <div className="flex justify-between mb-[10px]">
-        <h3 className="text-h4">Lista de Estudiantes</h3>
-        <button className="bg-brand-primary text-white-2 px-8 py-2 rounded-lg text-[18px] font-bold flex gap-4 items-center">
-          Registrar Calificaciones <img src="/pencil.svg" alt="Pencil Icon" />
-        </button>
-      </div>
-
-      <table className="w-full table-fixed">
-        <thead>
-          <tr>
-            <td className="text-black-1 font-bold bg-brand-secondary py-6 rounded-s-lg text-center">Estudiante</td>
-            <td className="text-black-1 font-bold bg-brand-secondary py-6 pl-20">ID</td>
-            <td className="text-black-1 font-bold bg-brand-secondary py-6">Calificacion</td>
-            <td className="text-black-1 font-bold bg-brand-secondary py-6 rounded-e-lg text-left">Comentario</td>
-          </tr>
-        </thead>
-      </table>
+      {/* Lista de Estudiantes */}
+      <StudentGradesContainer />
     </div>
   )
 }
