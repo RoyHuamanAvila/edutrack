@@ -46,12 +46,12 @@ const StudentGradesTable = ({ students, isRegistering, activateRegister, cancelR
               <tr className="odd:bg-white-2 even:bg-white-1" key={idEstudiante}>
                 <td className="pt-6 pb-2 text-center">{nombreCompleto}</td>
                 <td className="pt-6 pb-2 pl-20">{idEstudiante}</td>
-                <td className="pt-6 pb-2 ">
+                <td className="pt-6 pb-2">
                   {
                     isRegistering ?
                       <input
-                        className="border border-brand-primary text-center w-[66px]"
-                        type="number"
+                        className="border border-brand-primary text-center w-[66px] py-2 px-4 rounded-lg"
+                        type="text"
                         placeholder="Nota"
                         value={calificacion}
                         onChange={e => handleGradeChange(idEstudiante, e.target.value)}
