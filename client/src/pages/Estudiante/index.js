@@ -1,1 +1,1 @@
-export { default as Estudiante } from "./EstudianteContainer";
+export { default as Estudiante } from "./containers/EstudianteContainer";
