@@ -3,7 +3,7 @@ import { EyeIcon2 } from "../assets/icon/icon2";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { setToken } from "../token";
+import { decryptToken, setToken } from "../token";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -38,7 +38,17 @@ const Login = () => {
       const { token } = response.data;
 
       setToken(token);
-      navigate("/estudiante");
+      decryptToken();
+
+      const role = localStorage.getItem("role")
+      switch (role) {
+        case "Teacher":
+          navigate('/docente')
+          break;
+        case "Student":
+          navigate('/estudiante')
+          break;
+      }
     } catch (error) {
       const errorMessage =
         error.response?.data?.Email ||
