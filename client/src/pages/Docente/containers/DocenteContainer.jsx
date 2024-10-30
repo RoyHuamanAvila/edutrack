@@ -12,8 +12,8 @@ const DocenteContainer = () => {
 
   const handleGetDocenteData = async () => {
     const userDataToken = decryptToken();
-    const docenteId = userDataToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
-
+    const docenteId = userDataToken.id;
+    console.log(userDataToken)
     try {
       const docenteFetchData = await getDocenteById(docenteId);
       setDocente(docenteFetchData);
