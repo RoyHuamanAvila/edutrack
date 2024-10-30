@@ -26,7 +26,7 @@ namespace PlataformaSeguimientoEducativo.Services
             var user =  await _userService.RegisterUserAsync(registerUserDto);
             var teacher = new Teacher
             {
-                Subject = "Campo que no se usara",
+                Subject = "Actualizar Manual",
                 HireDate = DateTime.Now,
                 User = user
             };

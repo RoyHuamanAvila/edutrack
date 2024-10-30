@@ -11,6 +11,7 @@ namespace PlataformaSeguimientoEducativo.Repositories
         IParentRepository Parents { get; }
         IGradeRepository Grades { get; }
         ITeacherRepository Teachers { get; }
+        IFeedbackRepository Feedbacks { get; }
         Task<int> CompleteAsync();
     }
 }

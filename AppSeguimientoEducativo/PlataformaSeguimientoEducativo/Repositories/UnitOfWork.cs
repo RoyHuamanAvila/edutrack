@@ -13,6 +13,7 @@ namespace PlataformaSeguimientoEducativo.Repositories
         public IGradeRepository Grades { get; private set; }
 		public IParentRepository Parents { get; private set; }
         public ITeacherRepository Teachers { get; private set; }
+        public IFeedbackRepository Feedbacks { get; private set; }
 
         public UnitOfWork(PSEduDbContext context)
         {
@@ -24,7 +25,8 @@ namespace PlataformaSeguimientoEducativo.Repositories
 			Grades = new GradeRepository(_context);
 			Parents = new ParentRepository(_context);
             Teachers = new TeacherRepository(_context);
-		}
+            Feedbacks = new FeedbackRepository(_context);
+        }
 
         public async Task<int> CompleteAsync()
         {

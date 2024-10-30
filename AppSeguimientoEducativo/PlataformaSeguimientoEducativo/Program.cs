@@ -32,6 +32,7 @@ namespace PlataformaSeguimientoEducativo
             builder.Services.AddScoped<IStudentService, StudentService>();
             builder.Services.AddScoped<IParentService, ParentService>();
 			builder.Services.AddScoped<IGradeService, GradeService>();
+            builder.Services.AddScoped<IFeedbackService, FeedbackService>();
             builder.Services.AddScoped<ITeacherService, TeacherService>();
             builder.Services.AddScoped<ICourseService, CourseService>();
             builder.Services.AddScoped<IUserService, UserService>();
