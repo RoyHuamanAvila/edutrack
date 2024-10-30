@@ -1,5 +1,5 @@
-import StudentGradesContainer from "../containers/StudentGradesContainer"
-import GradeFilter from "./GradeFilter"
+import StudentGradesContainer from "../containers/StudentGradesContainer";
+import GradeFilter from "./GradeFilter";
 
 const DocenteView = ({ docente }) => {
   const { user, teacherId, subject } = docente
@@ -45,10 +45,9 @@ const DocenteView = ({ docente }) => {
         <h3 className="text-h5 text-grey-1">2024-3 / Educación Física / 7A Bachillerato</h3>
       </div>
 
-
       {/* Lista de Estudiantes */}
       <StudentGradesContainer />
     </div>
-  )
-}
-export default DocenteView
+  );
+};
+export default DocenteView;
