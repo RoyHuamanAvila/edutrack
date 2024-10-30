@@ -15,7 +15,11 @@ export const removeToken = () => {
   localStorage.removeItem("authToken");
 };
 
+// Desencripta el token
 export const decryptToken = () => {
-  const token = localStorage.getItem("authToken");
-  return jwtDecode(token);
+  const token = localStorage.getItem('authToken');
+  const decodedToken = jwtDecode(token);
+  localStorage.setItem('id', decodedToken.id)
+  localStorage.setItem('role', decodedToken.role)
+  return decodedToken;
 }
