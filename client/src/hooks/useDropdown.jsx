@@ -14,6 +14,8 @@ function useDropdown(id, name, options) {
     setIsOpen(false)
   }
 
+
+
   const DropdownComponent = ({ children, className }) => (
     <div id={id} name={name} className="relative w-max">
       {/* Botón dropdown */}

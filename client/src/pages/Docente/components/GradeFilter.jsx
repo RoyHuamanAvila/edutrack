@@ -1,8 +1,8 @@
 import useDropdown from "../../../hooks/useDropdown"
 
-const GradeFilter = () => {
+const GradeFilter = ({ subjects }) => {
   const { DropdownComponent: DropdownPeriod } = useDropdown('period', 'period', ['2024-3'])
-  const { DropdownComponent: DropdownSubject } = useDropdown('subject', 'subject', ['Educación Física'])
+  const { DropdownComponent: DropdownSubject } = useDropdown('subject', 'subject', subjects)
   const { DropdownComponent: DropdownCourse } = useDropdown('course', 'course', ['7A Bachillerato'])
 
   return (

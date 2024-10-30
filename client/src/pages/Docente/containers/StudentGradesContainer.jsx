@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { toast } from 'sonner'
 import StudentGradesTable from "../components/StudentGradesTable";
 import ModalComentario from "../../../components/Modal";
 
@@ -63,6 +64,7 @@ const StudentGradesContainer = () => {
   const handleSaveGrades = () => {
     setIsRegistering(false);
     initialState = students;
+    toast.success("Guardado Exitosamente")
   };
 
   const openModal = (student) => {

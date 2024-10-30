@@ -1,6 +1,3 @@
-import React from "react";
-import ModalComentario from "../../../components/Modal";
-
 const StudentGradesTable = ({
   students,
   isRegistering,
@@ -81,7 +78,7 @@ const StudentGradesTable = ({
                 </td>
                 <td className="pt-6 pb-2">
                   <button
-                    className="py-2 px-6 rounded-lg hover:bg-brand-secondary bg-black-2"
+                    className="py-2 px-6 rounded-lg hover:bg-brand-secondary"
                     onClick={() =>
                       openModal({ idEstudiante, nombreCompleto, comentario })
                     } // Abre el modal y pasa el estudiante
