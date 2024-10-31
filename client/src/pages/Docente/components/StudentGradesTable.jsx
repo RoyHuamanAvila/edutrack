@@ -48,7 +48,7 @@ const StudentGradesTable = ({
               ID
             </td>
             <td className="text-black-1 font-bold bg-brand-secondary py-6">
-              Calificacion
+              Calificación
             </td>
             <td className="text-black-1 font-bold bg-brand-secondary py-6 rounded-e-lg text-left">
               Comentario
