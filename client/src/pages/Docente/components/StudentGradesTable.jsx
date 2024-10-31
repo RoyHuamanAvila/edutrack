@@ -57,7 +57,14 @@ const StudentGradesTable = ({
         </thead>
         <tbody>
           {students.map(
-            ({ idEstudiante, nombreCompleto, calificacion, comentario }) => (
+            ({
+              idEstudiante,
+              nombreCompleto,
+              calificacion,
+              comentario,
+              courses,
+              grado,
+            }) => (
               <tr className="odd:bg-white-2 even:bg-white-1" key={idEstudiante}>
                 <td className="pt-6 pb-2 text-center">{nombreCompleto}</td>
                 <td className="pt-6 pb-2 pl-20">{idEstudiante}</td>
@@ -80,7 +87,13 @@ const StudentGradesTable = ({
                   <button
                     className="py-2 px-6 rounded-lg hover:bg-brand-secondary"
                     onClick={() =>
-                      openModal({ idEstudiante, nombreCompleto, comentario })
+                      openModal({
+                        idEstudiante,
+                        nombreCompleto,
+                        comentario,
+                        courses,
+                        grado,
+                      })
                     } // Abre el modal y pasa el estudiante
                   >
                     <img src="/comment.svg" alt="Comentario" />

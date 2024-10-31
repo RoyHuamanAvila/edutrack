@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { toast } from 'sonner'
+import { toast } from "sonner";
 import StudentGradesTable from "../components/StudentGradesTable";
 import ModalComentario from "../../../components/Modal";
 
@@ -8,30 +8,40 @@ let initialState = [
     nombreCompleto: "Ana García",
     idEstudiante: "E001",
     calificacion: 95,
+    courses: "Educación Física",
+    grado: "7A Bachillerato",
     comentario: "",
   },
   {
     nombreCompleto: "Luis Fernández",
     idEstudiante: "E002",
     calificacion: 88,
+    courses: "Educación Física",
+    grado: "7A Bachillerato",
     comentario: "",
   },
   {
     nombreCompleto: "María López",
     idEstudiante: "E003",
     calificacion: 92,
+    courses: "Educación Física",
+    grado: "7A Bachillerato",
     comentario: "",
   },
   {
     nombreCompleto: "Carlos Martínez",
     idEstudiante: "E004",
     calificacion: 85,
+    courses: "Educación Física",
+    grado: "7A Bachillerato",
     comentario: "",
   },
   {
     nombreCompleto: "Sofía Rodríguez",
     idEstudiante: "E005",
     calificacion: 90,
+    courses: "Educación Física",
+    grado: "7A Bachillerato",
     comentario: "",
   },
 ];
@@ -64,7 +74,7 @@ const StudentGradesContainer = () => {
   const handleSaveGrades = () => {
     setIsRegistering(false);
     initialState = students;
-    toast.success("Guardado Exitosamente")
+    toast.success("Guardado Exitosamente");
   };
 
   const openModal = (student) => {
