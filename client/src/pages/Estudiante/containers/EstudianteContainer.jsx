@@ -2,18 +2,20 @@
 import { useEffect, useState } from "react"
 import EstudianteView from "../components/EstudianteView";
 import { getDashboard, getUserById } from "../services";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../../features/authSlice";
 
 const EstudianteContainer = () => {
-  const [user, setUser] = useState();
   const [dashboard, setDashboard] = useState();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state?.authentication?.user)
   //const [promedio, setPromedio] = useState();
 
   const fetchUser = async () => {
     try {
       const id = localStorage.getItem('id');
       const userData = await getUserById(id);
-      setUser(userData);
-
+      dispatch(setUser(userData))
     } catch (error) {
       console.log(error);
     }
