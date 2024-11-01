@@ -3,7 +3,7 @@ const AcademicHistoryTable = ({ DropdownHistorial, courses }) => {
     <div>
       {/* Encabezado historial académico */}
       <div className="flex items-center justify-between mb-[10px]">
-        <h2 className="text-h3 font-extrabold">Historial Académico</h2>
+        <h2 className="text-h3 font-bold">Historial Académico</h2>
         <DropdownHistorial>Periodo</DropdownHistorial>
       </div>
 
@@ -21,7 +21,7 @@ const AcademicHistoryTable = ({ DropdownHistorial, courses }) => {
             courses?.map((course, index) =>
               course?.teachers?.map(teacher => {
                 return (
-                  <tr className="even:bg-white-1 odd:bg-white-2 text-sm" key={index}>
+                  <tr className="even:bg-white-1 odd:bg-white-2" key={index}>
                     <td className="py-[25px] px-[10px] pl-[200px]">{teacher.subjectName}</td>
                     <td className="py-[25px] px-[10px]">{teacher.gradeValue}</td>
                     <td className="py-[25px] px-[10px] pr-[200px]">{teacher.teacherName}</td>

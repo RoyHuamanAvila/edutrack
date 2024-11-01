@@ -3,7 +3,7 @@ import CommentCard from "./CommentCard";
 
 const listPeriod = ["2024-3", "2024-2", "2024-1"];
 
-const TeacherCommentsSection = ({ teachers }) => {
+const TeacherCommentsSection = ({ courses }) => {
   const { DropdownComponent: DropdownComentarios } = useDropdown(
     "Comentarios",
     "Comentarios",
@@ -15,7 +15,7 @@ const TeacherCommentsSection = ({ teachers }) => {
         <h2 className="text-h3 font-bold text-center">
           Comentarios de los docentes
         </h2>
-        <p className="text-sm text-center max-w-[592px] m-auto">
+        <p className="text-center max-w-[816px] m-auto">
           En esta sección encontrará los comentarios y la retroalimentación
           proporcionada por los docentes. Aquí podrá revisar observaciones
           detalladas sobre el desempeño, áreas de mejora y recomendaciones.
@@ -31,7 +31,7 @@ const TeacherCommentsSection = ({ teachers }) => {
         {/* Lista de comentarios */}
         <div className="grid grid-cols-2 gap-8 px-[104px]">
           {
-            teachers.map((teacher, index) => <CommentCard key={index} teacher={teacher} />)
+            courses?.map((course, index) => <CommentCard key={index} teacher={course.teachers[0]} />)
           }
         </div>
       </section>

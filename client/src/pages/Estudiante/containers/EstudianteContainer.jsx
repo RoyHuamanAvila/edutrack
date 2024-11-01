@@ -10,6 +10,7 @@ const EstudianteContainer = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state?.authentication?.user)
   //const [promedio, setPromedio] = useState();
+  const [average, setAverage] = useState(0);
 
   const fetchUser = async () => {
     try {
@@ -31,6 +32,8 @@ const EstudianteContainer = () => {
     }
   }
 
+
+
   /*   const obtainPromedio = (courses) => {
       const initialValue = 0;
       const sum = courses.reduce((previousValue, current) => previousValue + current.grades[0].gradeValue, initialValue);
@@ -42,6 +45,18 @@ const EstudianteContainer = () => {
     fetchDashboard();
   }, [])
 
-  return <EstudianteView user={user} courses={dashboard?.Courses} />
+  useEffect(() => {
+    const calculateAverage = () => {
+      if (dashboard) {
+        const initialState = 0;
+        const sum = dashboard.Courses.reduce((accumulator, currentValue) => accumulator + currentValue.teachers[0].gradeValue, initialState)
+        setAverage(Math.round(sum / dashboard.Courses.length));
+      }
+    }
+
+    calculateAverage();
+  }, [dashboard])
+
+  return <EstudianteView user={user} courses={dashboard?.Courses} average={average} />
 }
 export default EstudianteContainer
