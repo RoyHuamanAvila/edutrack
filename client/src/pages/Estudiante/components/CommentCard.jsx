@@ -7,8 +7,8 @@ const CommentCard = ({ teacher }) => {
           <img src={teacher?.profileImageUrl} alt="Foto del perfil del docente" />
         </div>
         <div className="space-y-2">
-          <p className="font-bold text-brand-primary">{teacher?.teacherName}</p>
-          <p className="text-grey-1 font-bold text-sm">
+          <p className="text-xl font-bold text-brand-primary">{teacher?.teacherName}</p>
+          <p className="text-grey-1 font-bold">
             {teacher?.subjectName} <br />
             {teacher?.feedback?.feedbackDate}
           </p>
@@ -16,7 +16,7 @@ const CommentCard = ({ teacher }) => {
       </div>
 
       {/* Comentario */}
-      <p className="text-sm">
+      <p className="text-black-2">
         {teacher?.feedback?.feedbackText}
       </p>
     </div>

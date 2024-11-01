@@ -1,11 +1,11 @@
 import AcademicHistoryContainer from "../containers/AcademicHistoryContainer";
 import TeacherCommentsSection from "./TeacherCommentsSection";
 
-const EstudianteView = ({ user, courses }) => {
+const EstudianteView = ({ user, courses, average }) => {
   const Tabla1 = {
     colegio: "Colegio Alemán",
     periodo: "2024-3",
-    tutor: "Hernando Gutierrez",
+    tutor: "Hernando Rodriguez",
   };
   const Tabla2 = {
     curso: "11A Bachillerato",
@@ -59,7 +59,7 @@ const EstudianteView = ({ user, courses }) => {
             <div className="font-bold">Teléfono Tutor</div>
 
             <div>{Tabla2.curso}</div>
-            <div>{5}</div>
+            <div>{courses?.length}</div>
             <div>{user?.phoneNumber}</div>
           </div>
         </div>
@@ -72,12 +72,12 @@ const EstudianteView = ({ user, courses }) => {
         {/* Promedio del periodo */}
         <section className="mx-auto w-max rounded-lg border-brand-primary border py-2 px-8">
           <span className="text-brand-primary font-bold text-lg">
-            Promedio del Periodo {49.3}
+            Promedio del Periodo {average}
           </span>
         </section>
 
         {
-          courses && <TeacherCommentsSection teachers={courses[0].teachers} />
+          courses && <TeacherCommentsSection courses={courses} />
         }
       </section>
     </div>
