@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import DocenteView from "../components/DocenteView"
 import { decryptToken } from "../../../token";
 import { getDocenteById } from "../services";
+import { useDispatch } from 'react-redux'
+import { setUser } from '../../../features/authSlice'
 
 const DocenteContainer = () => {
   const [docente, setDocente] = useState({
@@ -9,22 +11,24 @@ const DocenteContainer = () => {
     teacherName: 'José Alba',
     teacherId: 1124743862,
   });
-
-  const handleGetDocenteData = async () => {
-    const userDataToken = decryptToken();
-    const docenteId = userDataToken.id;
-    console.log(userDataToken)
-    try {
-      const docenteFetchData = await getDocenteById(docenteId);
-      setDocente(docenteFetchData);
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    const handleGetDocenteData = async () => {
+      const userDataToken = decryptToken();
+      const docenteId = userDataToken.id;
+      console.log(userDataToken)
+      try {
+        const docenteFetchData = await getDocenteById(docenteId);
+        setDocente(docenteFetchData);
+        dispatch(setUser(docenteFetchData?.user))
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     handleGetDocenteData();
-  }, [])
+  }, [dispatch])
 
   return (
     <DocenteView docente={docente} />
