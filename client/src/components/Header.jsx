@@ -1,12 +1,16 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="py-[15.3px] px-[28.778px] flex justify-between items-center bg-white">
       <div className="h-[57px]">
-        <img
-          src="/Logo.svg"
-          alt="Logo Edutrack"
-          className="h-[48px] w-[192px]"
-        />
+        <Link to='/'>
+          <img
+            src="/Logo.svg"
+            alt="Logo Edutrack"
+            className="h-[48px] w-[192px]"
+          />
+        </Link>
       </div>
       {/* <a
         href="#"
