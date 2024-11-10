@@ -70,12 +70,12 @@ const Login = () => {
 
   const imageDetails = {
     image1: {
-      src: "../public/imagenes/Portada.png",
+      src: "/imagenes/Portada.png",
       title: "Monitoreo de rendimientos",
       subtitle: "Actualizados y siempre accesibles",
     },
     image2: {
-      src: "../public/imagenes/Portada2.png",
+      src: "/imagenes/Portada2.png",
       title: "Evaluación y Retroalimentación",
       subtitle: "Orientado al progreso constante",
     },
