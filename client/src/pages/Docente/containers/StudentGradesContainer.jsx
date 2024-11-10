@@ -7,31 +7,31 @@ let initialState = [
   {
     nombreCompleto: "Ana García",
     idEstudiante: "E001",
-    calificacion: 95,
+    calificacion: 0,
     comentario: "",
   },
   {
     nombreCompleto: "Luis Fernández",
     idEstudiante: "E002",
-    calificacion: 88,
+    calificacion: 0,
     comentario: "",
   },
   {
     nombreCompleto: "María López",
     idEstudiante: "E003",
-    calificacion: 92,
+    calificacion: 0,
     comentario: "",
   },
   {
     nombreCompleto: "Carlos Martínez",
     idEstudiante: "E004",
-    calificacion: 85,
+    calificacion: 0,
     comentario: "",
   },
   {
     nombreCompleto: "Sofía Rodríguez",
     idEstudiante: "E005",
-    calificacion: 90,
+    calificacion: 0,
     comentario: "",
   },
 ];

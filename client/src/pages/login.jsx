@@ -4,8 +4,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { decryptToken, setToken } from "../token";
+import { useDispatch } from "react-redux";
+import { login } from "../features/authSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -49,6 +52,7 @@ const Login = () => {
           navigate('/estudiante')
           break;
       }
+      dispatch(login(token));
     } catch (error) {
       const errorMessage =
         error.response?.data?.Email ||

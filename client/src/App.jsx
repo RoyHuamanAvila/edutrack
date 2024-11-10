@@ -1,10 +1,14 @@
-import MyRoutes from './routes/routes';
 import './App.css'
+import MyRoutes from './routes/routes';
+import { Provider } from 'react-redux'
+import { store } from './app/store';
 
 function App() {
   return (
     <>
-      <MyRoutes />
+      <Provider store={store}>
+        <MyRoutes />
+      </Provider>
     </>
   )
 }
