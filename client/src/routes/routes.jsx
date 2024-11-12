@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Login from '../pages/login'
 import { Toaster } from "sonner";
+import RequireAuth from "./RequireAuth";
 
 function MyRoutes() {
     return (
@@ -14,8 +15,10 @@ function MyRoutes() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/estudiante" element={<Estudiante />} />
-                <Route path="/docente" element={<Docente />} />
+                <Route element={<RequireAuth />}>
+                    <Route path="/estudiante" element={<Estudiante />} />
+                    <Route path="/docente" element={<Docente />} />
+                </Route>
             </Routes>
             <Footer />
         </BrowserRouter>
