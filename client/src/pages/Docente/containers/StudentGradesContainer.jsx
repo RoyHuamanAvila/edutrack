@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from 'sonner'
 import StudentGradesTable from "../components/StudentGradesTable";
 import ModalComentario from "../../../components/Modal";
+import { Success } from "../../../components/Toast";
 
 let initialState = [
   {
@@ -59,7 +60,7 @@ const StudentGradesContainer = () => {
   const handleSaveGrades = () => {
     setIsRegistering(false);
     initialState = students;
-    toast.success("Guardado Exitosamente")
+    toast(<Success title='Registrado' content='El registro se guardó exitosamente' />)
   };
 
   const openModal = (student) => {

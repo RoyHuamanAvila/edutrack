@@ -1,11 +1,13 @@
 import { EyeIcon } from "../assets/icon/icon";
 import { EyeIcon2 } from "../assets/icon/icon2";
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { decryptToken, setToken } from "../token";
 import { useDispatch } from "react-redux";
 import { login } from "../features/authSlice";
+import { toast } from "sonner";
+import { Error, Success } from '../components/Toast'
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -53,6 +55,7 @@ const Login = () => {
           break;
       }
       dispatch(login(token));
+      toast(<Success title='Inicio de sesión' content='Se accedió con éxito' />)
     } catch (error) {
       const errorMessage =
         error.response?.data?.Email ||
@@ -62,6 +65,7 @@ const Login = () => {
         "Error en la autenticación:",
         error.response?.data.errors || error.response?.data
       );
+      toast(<Error title='Error al autenticar' content='Verifique sus credenciales' />)
     } finally {
       setLoading(false);
     }
@@ -202,7 +206,12 @@ const Login = () => {
                 className="w-[204px] bg-brand-primary text-white-1 font-semibold py-2 px-4 rounded-md transition duration-200"
                 disabled={loading}
               >
-                {loading ? "Cargando..." : "Iniciar Sesión"}
+                {loading ?
+                  <div className="flex items-center gap-4 justify-center">
+                    Cargando
+                    <img className="animate-spin size-5" src="/spinner-white.png" alt="spinner" />
+                  </div> :
+                  "Iniciar Sesión"}
               </button>
               {error && <p className="text-red-500 mt-2">{error}</p>}
             </form>
