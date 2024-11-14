@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, Navigate } from "react-router-dom";
 import { verifyToken } from "../features/authThunks";
+import Header from '../components/Header'
 import Spinner from "../components/Spinner";
 
 const RequireAuth = () => {
@@ -32,6 +33,11 @@ const RequireAuth = () => {
     return <Navigate to='/login' />
   }
 
-  return <Outlet />
+  return (
+    <div>
+      <Header />
+      <Outlet />
+    </div>
+  )
 }
 export default RequireAuth

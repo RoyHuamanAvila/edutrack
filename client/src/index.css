@@ -30,3 +30,51 @@ h6 {
 body {
   @apply bg-white-1;
 }
+
+.dropdown-outline {
+  @apply font-bold;
+
+  .dropdown-outline__btn {
+    @apply px-8 py-2 bg-white-2 flex items-center justify-center rounded-lg;
+    @apply flex gap-4;
+  }
+
+  .dropdown-outline__selected-option {
+    @apply text-brand-primary;
+  }
+
+  .dropdown-outline__arrow {
+    @apply stroke-brand-primary;
+  }
+
+  .dropdown-outline__list {
+    @apply w-full bg-white-2 mt-2 border border-brand-primary rounded-lg absolute overflow-hidden;
+  }
+  .dropdown-outline__item {
+    @apply text-brand-primary px-5 py-2 cursor-pointer hover:bg-brand-primary hover:text-white-2;
+  }
+}
+
+.dropdown {
+  @apply font-bold;
+
+  .dropdown__btn {
+    @apply px-8 py-2 bg-brand-primary flex items-center justify-center rounded-lg text-white-1;
+    @apply flex gap-4;
+  }
+
+  .dropdown__selected-option {
+    @apply text-white-2;
+  }
+
+  .dropdown__arrow {
+    @apply stroke-white-1;
+  }
+
+  .dropdown__list {
+    @apply w-full bg-white-2 mt-2 border border-brand-primary rounded-lg absolute overflow-hidden;
+  }
+  .dropdown__item {
+    @apply text-brand-primary px-5 py-2 cursor-pointer hover:bg-brand-primary hover:text-white-2;
+  }
+}
