@@ -9,7 +9,7 @@ import RequireAuth from "./RequireAuth";
 function MyRoutes() {
     return (
         <BrowserRouter>
-            <Toaster richColors />
+            <Toaster richColors toastOptions={{ style: { padding: 0, border: 'none' } }} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />

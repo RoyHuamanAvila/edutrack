@@ -5,9 +5,9 @@ const DocenteView = ({ docente }) => {
   const { user, teacherId, subject } = docente
 
   return (
-    <div id="docente" className="max-w-[1216px] mt-20 m-auto">
+    <div id="docente" className="max-w-[1216px] m-auto">
       {/* Datos del Docente */}
-      <div className="grid grid-cols-2 gap-8 my-[72px]">
+      <div className="grid grid-cols-2 gap-8 my-[72px] mt-[152px]">
         {/* Card izquierda */}
         <div className="card border border-brand-primary w-full flex">
           { /* Foto de perfil del docente */}
