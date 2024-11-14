@@ -4,7 +4,7 @@ const AcademicHistoryTable = ({ DropdownHistorial, courses }) => {
       {/* Encabezado historial académico */}
       <div className="flex items-center justify-between mb-[10px]">
         <h2 className="text-h3 font-bold">Historial Académico</h2>
-        <DropdownHistorial>Periodo</DropdownHistorial>
+        <DropdownHistorial className="dropdown">Periodo</DropdownHistorial>
       </div>
 
       {/* Tabla de notas */}

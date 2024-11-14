@@ -5,9 +5,11 @@ const listPeriod = ["2024-3", "2024-2", "2024-1"];
 
 const TeacherCommentsSection = ({ courses }) => {
   const { DropdownComponent: DropdownComentarios } = useDropdown(
-    "Comentarios",
-    "Comentarios",
-    listPeriod
+    {
+      id: "Comentarios",
+      name: "Comentarios",
+      options: listPeriod
+    }
   );
   return (
     <section>
@@ -25,7 +27,7 @@ const TeacherCommentsSection = ({ courses }) => {
       <section className="py-8">
         {/* Dropdown periodo escolar */}
         <div className="w-full flex justify-center mb-14">
-          <DropdownComentarios>Periodo</DropdownComentarios>
+          <DropdownComentarios className='dropdown'>Periodo</DropdownComentarios>
         </div>
 
         {/* Lista de comentarios */}

@@ -1,29 +1,39 @@
 import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
+import useDropdown from '../hooks/useDropdown'
+
+const userOptions = [
+  'Configuración',
+  'Cerrar Sesión'
+]
 
 const Header = () => {
   const { token, user } = useSelector((state) => state?.authentication);
+  const { DropdownComponent: UserDropdown } = useDropdown({ id: 'userDropdown', name: 'userDropdown', options: userOptions, selectable: false })
 
   return (
-    <div className="py-[15.3px] px-[28.778px] flex justify-between items-center bg-white">
-      <div className="h-[57px]">
-        <Link to='/'>
-          <img
-            src="/Logo.svg"
-            alt="Logo Edutrack"
-            className="h-[48px] w-[192px]"
-          />
-        </Link>
+    <div className='bg-white fixed top-0 right-0 left-0 bg-white-2 z-10'>
+      <div className="max-w-[1216px] m-auto py-4 flex justify-between items-center">
+        <div className="h-[48px]">
+          <Link to='/'>
+            <img
+              src="/Logo.svg"
+              alt="Logo Edutrack"
+              className="h-[48px] w-[192px]"
+            />
+          </Link>
+        </div>
+        {
+          token && user ? (
+            <UserDropdown className='dropdown-outline' extendClassName='border border-brand-primary rounded-lg text-brand-primary'>
+              <div className="flex items-center gap-4">
+                <img src="/user.svg" alt="user icon" />
+                {user?.fullName}
+              </div>
+            </UserDropdown>
+          ) : <></>
+        }
       </div>
-      {
-        token && user ? (
-          <button className='flex items-center text-brand-primary font-bold gap-4 border border-brand-primary rounded-lg px-8 py-2'>
-            <img src="/user.svg" alt="user icon" /> {user?.fullName} <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 11L14 17L20 11" stroke="#722b76" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        ) : <></>
-      }
     </div>
   );
 };

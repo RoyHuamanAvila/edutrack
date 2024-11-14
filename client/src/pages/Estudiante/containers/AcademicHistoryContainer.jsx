@@ -5,9 +5,11 @@ const listPeriod = ["2024-3", "2024-2", "2024-1"];
 
 const AcademicHistoryContainer = ({ courses }) => {
   const { DropdownComponent: DropdownHistorial } = useDropdown(
-    "Dropdown_Historial",
-    "Dropdown_Historial",
-    listPeriod
+    {
+      id: "Historial",
+      name: "Historial",
+      options: listPeriod
+    }
   );
 
   return <AcademicHistoryTable DropdownHistorial={DropdownHistorial} courses={courses} />

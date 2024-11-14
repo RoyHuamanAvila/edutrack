@@ -14,16 +14,16 @@ const EstudianteView = ({ user, courses, average }) => {
   };
 
   return (
-    <div className="max-w-[1281px] mx-auto">
-      <div className="py-10 sm:py-10">
+    <div className="max-w-[1216px] mt-20 mx-auto">
+      <div className="py-[72px]">
         <div className="flex flex-col lg:flex-row gap-8 justify-between">
           {/* Contenedor Izquierdo (Card 1) */}
-          <div className="w-[592px] h-[174px] bg-white rounded-lg p-1 flex items-center border border-brand-primary">
+          <div className="w-[592px] h-[174px] bg-white rounded-lg flex items-center border border-brand-primary overflow-hidden">
             {/* Imagen a la izquierda */}
             <img
               src={user?.profileImageUrl} // Asegúrate de que esta ruta sea correcta
               alt="Imagen"
-              className="w-[200px] h-[170px] "
+              className="w-[200px] h-full "
             />
 
             {/* Contenedor para el texto a la derecha */}

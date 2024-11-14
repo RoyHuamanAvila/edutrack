@@ -5,7 +5,7 @@ const DocenteView = ({ docente }) => {
   const { user, teacherId, subject } = docente
 
   return (
-    <div id="docente" className="max-w-[1216px] m-auto">
+    <div id="docente" className="max-w-[1216px] mt-20 m-auto">
       {/* Datos del Docente */}
       <div className="grid grid-cols-2 gap-8 my-[72px]">
         {/* Card izquierda */}
@@ -42,7 +42,6 @@ const DocenteView = ({ docente }) => {
       <div className="space-y-6 mb-6">
         <h2 className="text-h3">Califique y Retroalimente a sus Estudiantes</h2>
         <GradeFilter subjects={[subject]} />
-        <h3 className="text-h5 text-grey-1">2024-3 / Educación Física / 7A Bachillerato</h3>
       </div>
 
       {/* Lista de Estudiantes */}

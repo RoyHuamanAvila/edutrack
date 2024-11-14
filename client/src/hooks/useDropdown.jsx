@@ -1,53 +1,59 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 
-function useDropdown(id, name, options) {
+function useDropdown({ id, name, options, selectable = true }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0])
+  const [selectedOption, setSelectedOption] = useState([]);
   const dropdownRef = useRef();
 
   const handleOpen = () => {
-    setIsOpen(!isOpen);
-  }
+    setIsOpen(prevState => !prevState);
+  };
 
   const handleSetOption = (option) => {
-    setSelectedOption(option)
-    setIsOpen(false)
-  }
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
 
+  useEffect(() => {
+    if (options) {
+      setSelectedOption(options[0])
+    }
+  }, [options])
 
-
-  const DropdownComponent = ({ children, className }) => (
-    <div id={id} name={name} className="relative w-max">
-      {/* Botón dropdown */}
+  const DropdownComponent = ({ children: label, className, extendClassName }) => (
+    <div id={id} name={name} className={`relative w-max ${className} ${extendClassName}`}>
       <button
         ref={dropdownRef}
         onClick={handleOpen}
         id={`btn-${id}`}
-        className={`flex gap-4 bg-brand-primary font-bold text-white-2 px-8 py-2 rounded-lg items-center ${className}`}
+        className={`${className}__btn`}
       >
-        <span>{children}</span> {selectedOption} <img src="/arrow-down.svg" />
+        <span className={`${className}__label`}>{label}</span>
+        {
+          selectable && <span className={`${className}__selected-option`}>{selectedOption}</span>
+        }
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path className={`${className}__arrow`} d="M8 11L14 17L20 11" stroke="#FAFAFA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </button>
 
-      {/* Menu dropdown */}
-      {
-        isOpen &&
-        <ul className="border border-brand-primary rounded-lg absolute left-0 right-0 mt-2 bg-white-2">
-          {
-            options.map((option, index) =>
-              <li
-                key={`id_${index}`}
-                className="block py-4 px-8 text-brand-primary font-bold hover:bg-brand-primary hover:text-white-2 cursor-pointer"
-                onClick={() => handleSetOption(option)}
-              >
-                {option}
-              </li>)
-          }
+      {isOpen && (
+        <ul className={`${className}__list`}>
+          {options.map((option, index) => (
+            <li
+              key={`id_${index}`}
+              onClick={() => handleSetOption(option)}
+              className={`${className}__item`}
+            >
+              {option}
+            </li>
+          ))}
         </ul>
-      }
+      )}
     </div>
-  )
+  );
 
-  return { DropdownComponent, selectedOption }
+  return { DropdownComponent, selectedOption };
 }
 
-export default useDropdown
+export default useDropdown;
