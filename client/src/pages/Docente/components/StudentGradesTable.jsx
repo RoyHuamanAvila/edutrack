@@ -15,10 +15,10 @@ const StudentGradesTable = ({
         {isRegistering ? (
           <div className="flex gap-2">
             <button
-              className="bg-brand-primary text-white-2 py-2 px-8 rounded-lg font-bold"
+              className="bg-brand-primary text-white-2 py-2 px-8 rounded-lg font-bold flex gap-4 items-center"
               onClick={handleSaveGrades}
             >
-              Guardar Cambios
+              Guardar Cambios <img src="/save.svg" alt="Save icon" />
             </button>
             <button
               className="bg-brand-secondary text-brand-primary py-2 px-8 rounded-lg font-bold"
