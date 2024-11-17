@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/home"
-import { Estudiante, Docente } from "../pages";
+import { Estudiante, Docente, Tutor } from "../pages";
 import Footer from '../components/Footer'
 import Login from '../pages/login'
 import { Toaster } from "sonner";
@@ -16,6 +16,7 @@ function MyRoutes() {
                 <Route element={<RequireAuth />}>
                     <Route path="/estudiante" element={<Estudiante />} />
                     <Route path="/docente" element={<Docente />} />
+                    <Route path="/tutor" element={<Tutor />} />
                 </Route>
             </Routes>
             <Footer />
