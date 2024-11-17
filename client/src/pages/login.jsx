@@ -53,6 +53,9 @@ const Login = () => {
         case "Student":
           navigate('/estudiante')
           break;
+        case "Parent":
+          navigate('/tutor')
+          break;
       }
       dispatch(login(token));
       toast(<Success title='Inicio de sesión' content='Se accedió con éxito' />)
